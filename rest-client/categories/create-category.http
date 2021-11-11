@@ -17,6 +17,6 @@ POST {{url_base}}/{{path}}
 Content-Type: application/json
 
 {
-  "name": "SUV",
+  "name": "Sendan",
   "description": "Categoria de carro de passeio"
 }
