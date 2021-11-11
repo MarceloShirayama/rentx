@@ -1,11 +1,11 @@
-import { ICategoriesRepository } from '../repositories/ICategoriesRepository'
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository'
 
 interface IRequest {
   name: string
   description: string
 }
 
-export class CreateCategoryService {
+export class CreateCategoryUseCase {
   // eslint-disable-next-line no-useless-constructor
   constructor(private categoriesRepository: ICategoriesRepository) {}
 

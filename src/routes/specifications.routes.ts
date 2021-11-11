@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { SpecificationsRepository } from '../modules/cars/repositories/SpecificationsRepository'
-import { CreateSpecificationService } from '../modules/cars/services/CreateSpecificationService'
+import { CreateSpecificationUseCase } from '../modules/cars/useCases/CreateSpecification/CreateSpecificationUseCase'
 
 const specificationsRoutes = Router()
 
@@ -10,11 +10,13 @@ specificationsRoutes.post('/', (req, res) => {
   const { name, description } = req.body
 
   try {
-    const createSpecificationService = new CreateSpecificationService(
-      specificationsRepository
-    )
+    const createSpecificationUseCaseCreateSpecificationUseCase =
+      new CreateSpecificationUseCase(specificationsRepository)
 
-    createSpecificationService.execute({ name, description })
+    createSpecificationUseCaseCreateSpecificationUseCase.execute({
+      name,
+      description
+    })
 
     return res.status(201).send()
   } catch (error) {
