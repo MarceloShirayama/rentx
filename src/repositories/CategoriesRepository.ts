@@ -13,11 +13,6 @@ export class CategoriesRepository {
   }
 
   create({ name, description }: ICategoryDTO): void {
-    const categoryAlreadyExists = this.findByName(name)
-
-    if (categoryAlreadyExists)
-      throw new Error(`${name} category already exists`)
-
     const category = new Category()
 
     Object.assign(category, { name, description })
