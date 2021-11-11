@@ -3,11 +3,20 @@
 @url_base=http://{{host}}:{{port}}
 @path=categories
 
-### Create category
+### Create category SUV
 POST {{url_base}}/{{path}}
 Content-Type: application/json
 
 {
   "name": "SUV",
   "description": "Categoria de carro utilitário"
+}
+
+### Create category Sedan
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "SUV",
+  "description": "Categoria de carro de passeio"
 }

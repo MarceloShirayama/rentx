@@ -1,0 +1,6 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=categories
+
+GET {{url_base}}/{{path}}
