@@ -1,0 +1,22 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=specifications
+
+### Create category SUV
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "Câmbio automático",
+  "description": "Categoria de carro com câmbio automático"
+}
+
+### Create category Sedan
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "Teto solar",
+  "description": "Categoria de carro com teto solar"
+}

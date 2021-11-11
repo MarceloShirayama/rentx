@@ -5,12 +5,15 @@ import { CreateCategoryService } from '../modules/cars/services/CreateCategorySe
 const categoriesRoutes = Router()
 
 const categoriesRepository = new CategoriesRepository()
-const createCategoryService = new CreateCategoryService(categoriesRepository)
 
 categoriesRoutes.post('/', (req, res) => {
   const { name, description } = req.body
 
   try {
+    const createCategoryService = new CreateCategoryService(
+      categoriesRepository
+    )
+
     createCategoryService.execute({ name, description })
 
     return res.status(201).send()
