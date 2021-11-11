@@ -1,5 +1,5 @@
 {
-  "name": "setup-typescript-nodejs-eslint-prettier",
+  "name": "rentx",
   "version": "1.0.0",
   "description": "",
   "main": "./src/server.ts",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/uuid": "^8.3.1",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "babel-eslint": "^10.1.0",
@@ -29,6 +30,7 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
   }
 }
