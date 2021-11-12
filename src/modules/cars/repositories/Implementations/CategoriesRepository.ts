@@ -1,5 +1,5 @@
-import { Category } from '../entities/Category'
-import { ICategoriesRepository, ICategoryDTO } from './ICategoriesRepository'
+import { Category } from '../../entities/Category'
+import { ICategoriesRepository, ICategoryDTO } from '../ICategoriesRepository'
 
 export class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[]

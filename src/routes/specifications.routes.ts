@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { SpecificationsRepository } from '../modules/cars/repositories/SpecificationsRepository'
+import { SpecificationsRepository } from '../modules/cars/repositories/Implementations/SpecificationsRepository'
 import { CreateSpecificationUseCase } from '../modules/cars/useCases/CreateSpecification/CreateSpecificationUseCase'
 
 const specificationsRoutes = Router()
