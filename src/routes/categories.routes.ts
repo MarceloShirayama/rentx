@@ -1,15 +1,14 @@
 import { Router } from 'express'
-import { createCategoriesCompose } from '../modules/cars/useCases/CreateCategory'
-import { listCategoriesCompose } from '../modules/cars/useCases/ListCategories'
+import { CreateCategoryController } from '../modules/cars/useCases/CreateCategory/CreateCategoryController'
+import { ListCategoriesController } from '../modules/cars/useCases/ListCategories/ListCategoriesController'
 
 const categoriesRoutes = Router()
 
-categoriesRoutes.post('/', (req, res) => {
-  return createCategoriesCompose().handle(req, res)
-})
+const createCategoryController = new CreateCategoryController()
+const listCategoriesController = new ListCategoriesController()
 
-categoriesRoutes.get('/', (req, res) => {
-  return listCategoriesCompose().handle(req, res)
-})
+categoriesRoutes.post('/', createCategoryController.handle)
+
+categoriesRoutes.get('/', listCategoriesController.handle)
 
 export { categoriesRoutes }
