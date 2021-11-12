@@ -6,7 +6,6 @@ interface IRequest {
 }
 
 export class CreateSpecificationUseCase {
-  // eslint-disable-next-line no-useless-constructor
   constructor(private specificationRepository: ISpecificationsRepository) {}
 
   execute({ name, description }: IRequest): void {

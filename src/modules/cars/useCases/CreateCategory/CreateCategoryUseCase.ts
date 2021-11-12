@@ -6,7 +6,6 @@ interface IRequest {
 }
 
 export class CreateCategoryUseCase {
-  // eslint-disable-next-line no-useless-constructor
   constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ name, description }: IRequest): void {

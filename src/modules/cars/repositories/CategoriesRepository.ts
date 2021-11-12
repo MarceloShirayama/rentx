@@ -3,7 +3,7 @@ import { ICategoriesRepository, ICategoryDTO } from './ICategoriesRepository'
 
 export class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[]
-  private static INSTANCE: CategoriesRepository
+  private static INSTANCE?: CategoriesRepository
 
   private constructor() {
     this.categories = []
