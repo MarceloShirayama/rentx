@@ -1,0 +1,19 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=categories/import
+
+
+POST {{url_base}}/{{path}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+title
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="attachment.csv"
+Content-Type: text/csv
+
+< /home/marcelo/Downloads/attachment.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
