@@ -4,6 +4,7 @@
 @path=categories/import
 
 
+### File of the Ignite course
 POST {{url_base}}/{{path}}
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
