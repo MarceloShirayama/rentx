@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "ts-node-dev -r dotenv/config --inspect --transpile-only --ignore-watch node_modules --respawn .",
     "build": "tsc",
-    "start": "node -r dotenv/config ./dist/server.js"
+    "start": "node -r dotenv/config ./dist/server.js",
+    "migration:create": "node_modules/.bin/typeorm migration:create -n",
+    "migration:run": "node_modules/.bin/typeorm migration:run",
+    "migration:revert": "node_modules/.bin/typeorm migration:revert"
   },
   "keywords": [],
   "author": "",
