@@ -3,10 +3,10 @@ import { container } from 'tsyringe'
 import { ListCategoriesUseCase } from './ListCategoriesUseCase'
 
 export class ListCategoriesController {
-  handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response): Promise<Response> {
     const listCategoriesUseCase = container.resolve(ListCategoriesUseCase)
 
-    const categories = listCategoriesUseCase.execute()
+    const categories = await listCategoriesUseCase.execute()
 
     return res.status(200).send(categories)
   }

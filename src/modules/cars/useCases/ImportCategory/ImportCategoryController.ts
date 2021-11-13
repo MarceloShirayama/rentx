@@ -5,12 +5,12 @@ import { ImportCategoryUseCase } from './ImportCategoryUseCase'
 export class ImportCategoryController {
   // constructor(private importCategoryUseCase: ImportCategoryUseCase) {}
 
-  handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { file } = req
 
     const importCategoryUseCase = container.resolve(ImportCategoryUseCase)
 
-    importCategoryUseCase.execute(file)
+    await importCategoryUseCase.execute(file)
 
     return res.status(200).send()
   }
