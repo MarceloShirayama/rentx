@@ -3,7 +3,7 @@ import { container } from 'tsyringe'
 import { CreateSpecificationUseCase } from './CreateSpecificationUseCase'
 
 export class CreateSpecificationController {
-  handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     const { name, description } = req.body
 
     try {
@@ -11,7 +11,7 @@ export class CreateSpecificationController {
         CreateSpecificationUseCase
       )
 
-      createSpecificationUseCase.execute({ name, description })
+      await createSpecificationUseCase.execute({ name, description })
 
       return res.status(201).send()
     } catch (error) {
