@@ -1,5 +1,5 @@
 import { getRepository, Repository } from 'typeorm'
-import { ICreateUserDTO } from '../../dtos/ICreateDTO'
+import { CreateUserDTO } from '../../dtos/CreateUserDTO'
 import { User } from '../../entities/Users'
 import { IUsersRepository } from '../IUsersRepository'
 
@@ -10,7 +10,7 @@ export class UsersRepository implements IUsersRepository {
     this.repository = getRepository(User)
   }
 
-  async create(data: ICreateUserDTO): Promise<void> {
+  async create(data: CreateUserDTO): Promise<void> {
     const user = this.repository.create({ ...data })
 
     await this.repository.save(user)

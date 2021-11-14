@@ -1,0 +1,16 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=users
+
+### Create user1
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "User1_name User1_lastName",
+  "username": "user1",
+  "password": "1234",
+  "email": "user1@mail.com",
+  "driver_license": "1234567890"
+}
