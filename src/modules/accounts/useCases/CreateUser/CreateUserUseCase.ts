@@ -1,3 +1,4 @@
+import { hash } from 'bcrypt'
 import { inject, injectable } from 'tsyringe'
 import { CreateUserDTO } from '../../dtos/CreateUserDTO'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
@@ -15,6 +16,10 @@ export class CreateUserUseCase {
     const userAlreadyExists = await this.usersRepository.findByEmail(data.email)
 
     if (userAlreadyExists) throw new Error(`User ${data.email} already exists`)
+
+    const passwordHash = await hash(data.password, 8)
+
+    data.password = passwordHash
 
     this.usersRepository.create({ ...data })
   }
