@@ -75,6 +75,33 @@
         }
       }
     },
+    "/categories/import": {
+      "post": {
+        "tags": ["Category"],
+        "summary": "Upload categories",
+        "description": "Upload categories from a csv file.",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
     "/specifications": {
       "post": {
         "tags": ["Specification"],
