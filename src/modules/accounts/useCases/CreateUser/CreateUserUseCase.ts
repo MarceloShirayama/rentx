@@ -12,12 +12,9 @@ export class CreateUserUseCase {
   ) {}
 
   async execute(data: RequestUserDTO): Promise<void> {
-    const userAlreadyExists = await this.usersRepository.findByUsername(
-      data.username
-    )
+    const userAlreadyExists = await this.usersRepository.findByEmail(data.email)
 
-    if (userAlreadyExists)
-      throw new Error(`User ${data.username} already exists`)
+    if (userAlreadyExists) throw new Error(`User ${data.email} already exists`)
 
     this.usersRepository.create({ ...data })
   }
