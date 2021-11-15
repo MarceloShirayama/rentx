@@ -1,6 +1,6 @@
 .vscode
 dist
 build
-tmp/*
+tmp/**/*
 node_modules
 .pgdatadir

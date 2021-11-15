@@ -11,5 +11,50 @@ Content-Type: application/json
   "name": "User1_name User1_lastName",
   "password": "1234",
   "email": "user1@mail.com",
-  "driver_license": "1234567890"
+  "driver_license": "1234567890",
+  "avatar": "avatar1"
+}
+
+### Create user2
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "User2_name User2_lastName",
+  "password": "1234",
+  "email": "user2@mail.com",
+  "driver_license": "2345678901"
+}
+
+### Create user3
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "User3_name User3_lastName",
+  "password": "1234",
+  "email": "user3@mail.com",
+  "driver_license": "3456789012"
+}
+
+### Create user4
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "User4_name User4_lastName",
+  "password": "1234",
+  "email": "user4@mail.com",
+  "driver_license": "4567890123"
+}
+
+### Create user5
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "User5_name User5_lastName",
+  "password": "1234",
+  "email": "user5@mail.com",
+  "driver_license": "5678901234"
 }
