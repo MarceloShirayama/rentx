@@ -3,20 +3,45 @@
 @url_base=http://{{host}}:{{port}}
 @path=specifications
 
-### Create category SUV
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzY5NzcyMjAsImV4cCI6MTYzNzA2MzYyMCwic3ViIjoiMmYxNDc1OTgtMzEzMS00M2FjLThkM2ItNGZhNDk0NTI3ZWU3In0.QKsAcSaTgoxOS8PG32txDqHzFBr276p8S_qD8bOoPhM
+@token_invalid=eyJhbGciOiJIUzI1NiIs.eyJTgtMzEzMS00M2FjLThkM.QKsAcSaTgoxOS8PG32txDqH
+
+### Create specification
 POST {{url_base}}/{{path}}
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
   "name": "Câmbio automático",
-  "description": "Categoria de carro com câmbio automático"
+  "description": "Especificação de carro com câmbio automático"
 }
 
-### Create category Sedan
+### Create specification
 POST {{url_base}}/{{path}}
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
   "name": "Teto solar",
-  "description": "Categoria de carro com teto solar"
+  "description": "Especificação de carro com teto solar"
+}
+
+### Create specification
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "4 portas",
+  "description": "Especificação de carro com 4 portas"
+}
+
+### Create specification invalid token
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_invalid}}
+Content-Type: application/json
+
+{
+  "name": "Invalid token",
+  "description": "Especificação de Invalid token"
 }
