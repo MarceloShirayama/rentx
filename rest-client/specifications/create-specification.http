@@ -3,7 +3,7 @@
 @url_base=http://{{host}}:{{port}}
 @path=specifications
 
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzY5ODI1NTgsImV4cCI6MTYzNzA2ODk1OCwic3ViIjoiMzQwMTcxNjQtZTE5My00MWI4LTg3MDctOWZkNGE5NGFmZjMwIn0.20jLC5267tm6W2UZD1_t7QWqTS4qbV1-uDrR4PIyitg
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzY5ODg1MzMsImV4cCI6MTYzNzA3NDkzMywic3ViIjoiMDk2MWQzNmEtMWJhNi00YmNiLWE4YzYtNzA2MzNhMjQ3ZTNmIn0.cLCwnL94kFflvVy3Cr3NHoynWvPw7SudOW6aNGZvIH4
 @token_invalid=eyJhbGciOiJIUzI1NiIs.eyJTgtMzEzMS00M2FjLThkM.QKsAcSaTgoxOS8PG32txDqH
 
 ### Create specification
