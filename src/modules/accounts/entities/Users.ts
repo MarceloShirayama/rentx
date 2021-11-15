@@ -21,6 +21,9 @@ export class User {
   @Column()
   isAdmin?: boolean
 
+  @Column()
+  avatar?: string
+
   @CreateDateColumn()
   created_at?: Date
 
@@ -28,5 +31,6 @@ export class User {
     if (!this.id) this.id = uuidV4()
     this.isAdmin = false
     this.created_at = new Date()
+    this.avatar = ''
   }
 }
