@@ -1,0 +1,31 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=sessions
+
+### Create token
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user1@mail.com",
+  "password": "1234"
+}
+
+### Create token with incorrect email
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user1000@mail.com",
+  "password": "1234"
+}
+
+### Create token with incorrect password
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user1@mail.com",
+  "password": "4321"
+}
