@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe'
+import { deleteFile } from '../../../../utils/file'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 
 export type RequestUserAvatar = {
@@ -15,6 +16,8 @@ export class UpdateUseAvatarUseCase {
 
   async execute({ user_id, avatarFile }: RequestUserAvatar): Promise<void> {
     const user = await this.usersRepository.findById(user_id)
+
+    if (user?.avatar) await deleteFile(`./tmp/avatar/${user?.avatar}`)
 
     user!.avatar = avatarFile
 

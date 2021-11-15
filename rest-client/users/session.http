@@ -3,12 +3,48 @@
 @url_base=http://{{host}}:{{port}}
 @path=sessions
 
-### Create token
+### Create token user1
 POST {{url_base}}/{{path}}
 Content-Type: application/json
 
 {
   "email": "user1@mail.com",
+  "password": "1234"
+}
+
+### Create token user2
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user2@mail.com",
+  "password": "1234"
+}
+
+### Create token user3
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user3@mail.com",
+  "password": "1234"
+}
+
+### Create token user4
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user4@mail.com",
+  "password": "1234"
+}
+
+### Create token user5
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user5@mail.com",
   "password": "1234"
 }
 

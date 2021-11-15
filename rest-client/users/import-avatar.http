@@ -3,7 +3,7 @@
 @url_base=http://{{host}}:{{port}}
 @path=users/avatar
 
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcwMDEzMTYsImV4cCI6MTYzNzA4NzcxNiwic3ViIjoiOTYwZjllZGEtNmMyZS00ZWZjLWEzNTctODYyN2I2MjNmY2I2In0.qnNPF3HpLhh2Nhl4XseqIpZr3bhgZVEx_fOz2dl-Yl0
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcwMTU3NzIsImV4cCI6MTYzNzEwMjE3Miwic3ViIjoiYzI2OTY1NzQtOThjMy00ODljLWJjNzYtMzNmZDRkOWUyMWY4In0.2SREsLqu7FR_gT7MxRyOzRPE0lHydoe8c96wgNHVd9U
 @token_invalid=nR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYNDYsImV4cCI6.NVUZVgs2GmeCYZcqpagr
 
 
