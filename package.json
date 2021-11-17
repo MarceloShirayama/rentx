@@ -11,7 +11,8 @@
     "migration:create": "NODE_ENV=local npm run typeorm -- migration:create -- -n",
     "migration:run": "NODE_ENV=local npm run typeorm -- migration:run",
     "migration:revert": "NODE_ENV=local npm run typeorm -- migration:revert",
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "jest --watch"
   },
   "keywords": [],
   "author": "",
