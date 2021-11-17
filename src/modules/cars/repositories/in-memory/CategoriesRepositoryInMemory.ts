@@ -19,7 +19,7 @@ export class CategoriesRepositoryInMemory implements ICategoriesRepository {
   }
 
   async findByName(name: string): Promise<Category | undefined> {
-    const category = this.categories.find((category) => (category.name = name))
+    const category = this.categories.find((category) => category.name === name)
 
     return category
   }
