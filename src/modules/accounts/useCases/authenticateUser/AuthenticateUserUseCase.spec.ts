@@ -1,3 +1,4 @@
+import { AppError } from '../../../../errors/AppError'
 import { CreateUserDTO } from '../../dtos/CreateUserDTO'
 import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepositoryInMemory'
 import { CreateUserUseCase } from '../CreateUser/CreateUserUseCase'
@@ -37,5 +38,14 @@ describe('Authenticate User', () => {
 
     expect(token).toHaveProperty('user')
     expect(token).toHaveProperty('token')
+  })
+
+  it('Should not be able to authenticate an nonexistent user', async () => {
+    expect(async () => {
+      await authenticateUserUseCase.execute({
+        email: 'any_email',
+        password: 'any_password'
+      })
+    }).rejects.toBeInstanceOf(AppError)
   })
 })
