@@ -48,4 +48,24 @@ describe('Authenticate User', () => {
       })
     }).rejects.toBeInstanceOf(AppError)
   })
+
+  it('Should not be able to authenticate an user with incorrect password', async () => {
+    expect(async () => {
+      const userFake: CreateUserDTO = {
+        name: 'any_name',
+        password: 'any_password',
+        email: 'any_email@mail.com',
+        driver_license: 'any_driver_license'
+      }
+
+      const passwordInvalid = 'password_invalid'
+
+      await createUserUseCase.execute(userFake)
+
+      await authenticateUserUseCase.execute({
+        email: userFake.email,
+        password: passwordInvalid
+      })
+    }).rejects.toBeInstanceOf(AppError)
+  })
 })
