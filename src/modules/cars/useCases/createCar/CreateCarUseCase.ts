@@ -19,6 +19,13 @@ export class CreateCarUseCase {
   ) {}
 
   async execute(data: RequestCreateCar): Promise<void> {
+    const carAlreadyExists = await this.carsRepository.findByLicensePlate(
+      data.license_plate
+    )
+
+    if (carAlreadyExists)
+      throw new Error(`Car license plate ${data.license_plate} already exists`)
+
     this.carsRepository.create({ ...data })
   }
 }
