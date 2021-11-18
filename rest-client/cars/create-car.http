@@ -1,0 +1,32 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=cars
+
+### Create car Audi A3
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "A3",
+  "description": "carro sedã 4 portas",
+  "daily_rate": "500",
+  "license_plate": "XPT-0000",
+  "fine_amount": "350",
+  "brand": "Audi",
+  "category_id": "4e09942c-5d2f-48ba-8d79-e2dce19406ef"
+}
+
+### Create car
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "name": "Fusca",
+  "description": "carro popular 2 portas",
+  "daily_rate": "100",
+  "license_plate": "FUS-0001",
+  "fine_amount": "50",
+  "brand": "",
+  "category_id": "9722e841-d8a1-4e0c-a2d5-1be75deb0cdc"
+}

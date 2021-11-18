@@ -1,3 +1,4 @@
+import { AppError } from '../../../../shared/infra/errors/AppError'
 import { inject, injectable } from 'tsyringe'
 import { ICarsRepository } from '../../repositories/ICarsRepository'
 
@@ -24,7 +25,9 @@ export class CreateCarUseCase {
     )
 
     if (carAlreadyExists)
-      throw new Error(`Car license plate ${data.license_plate} already exists`)
+      throw new AppError(
+        `Car license plate ${data.license_plate} already exists`
+      )
 
     this.carsRepository.create({ ...data })
   }
