@@ -1,9 +1,14 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn
+} from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
 
 @Entity('specifications')
 export class Specification {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn('uuid')
   id?: string
 
   @Column()
