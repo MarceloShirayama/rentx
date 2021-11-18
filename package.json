@@ -2,7 +2,7 @@
   "name": "rentx",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server.ts",
+  "main": "src/shared/infra/http/server.ts",
   "scripts": {
     "dev": "ts-node-dev -r dotenv/config --inspect --transpile-only --ignore-watch node_modules --respawn .",
     "build": "tsc",
