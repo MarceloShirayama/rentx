@@ -10,7 +10,7 @@ describe('Create Car', () => {
     createCarUseCase = new CreateCarUseCase(carsRepository)
   })
 
-  it('Should be able to create a new car', async () => {
+  it('Should be able to create a new car as available by default', async () => {
     const fakeCar = {
       name: 'any_name_car',
       description: 'any_description',
@@ -26,10 +26,10 @@ describe('Create Car', () => {
     const carSave = await carsRepository.findByLicensePlate(
       fakeCar.license_plate
     )
-    console.log('carSave: ', carSave)
 
     expect(carSave).toHaveProperty('id')
     expect(carSave?.name).toBe(fakeCar.name)
+    expect(carSave?.available).toBeTruthy()
   })
 
   it('Should not be able to create a new car if already exists an car with equal license plate', async () => {
