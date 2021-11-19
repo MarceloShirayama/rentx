@@ -3,6 +3,15 @@
 @url_base=http://{{host}}:{{port}}
 @path=sessions
 
+### Create token User Admin Seed
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "admin@mail.com",
+  "password": "admin"
+}
+
 ### Create token user1
 POST {{url_base}}/{{path}}
 Content-Type: application/json

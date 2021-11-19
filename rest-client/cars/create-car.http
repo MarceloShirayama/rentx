@@ -3,8 +3,12 @@
 @url_base=http://{{host}}:{{port}}
 @path=cars
 
+@token_admin_seed=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzczMTkyNjcsImV4cCI6MTYzNzQwNTY2Nywic3ViIjoiM2FkYzJiMWYtN2UxMS00MGRlLThlYjUtNWZkZWM3MWE4Yjc5In0.TmgB4IGfrbphRj7ARY4FQG2ODmmCGEPtL0-SpJNpptA
+@token_not_admin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyODEwMDYsImV4cCI6MTYzNzM2NzQwNiwic3ViIjoiZjZlZDk0MTItYTBmNS00MjE4LWI1ZmYtZTM1OTk1Y2NiM2RkIn0.Jr7RmeCADtrD763vCANodTupIivE6RxFlFe9kdPq_g8
+
 ### Create car Audi A3
 POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
 
 {
@@ -19,11 +23,27 @@ Content-Type: application/json
 
 ### Create car
 POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
 
 {
   "name": "Fusca",
   "description": "carro popular 2 portas",
+  "daily_rate": "100",
+  "license_plate": "FUS-0001",
+  "fine_amount": "50",
+  "brand": "",
+  "category_id": "9722e841-d8a1-4e0c-a2d5-1be75deb0cdc"
+}
+
+### Create car user not admin
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_not_admin}}
+Content-Type: application/json
+
+{
+  "name": "Any",
+  "description": "any description",
   "daily_rate": "100",
   "license_plate": "FUS-0001",
   "fine_amount": "50",
