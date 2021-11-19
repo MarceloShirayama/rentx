@@ -3,8 +3,11 @@
 @url_base=http://{{host}}:{{port}}
 @path=users
 
+@token_admin_seed=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzczMTkyNjcsImV4cCI6MTYzNzQwNTY2Nywic3ViIjoiM2FkYzJiMWYtN2UxMS00MGRlLThlYjUtNWZkZWM3MWE4Yjc5In0.TmgB4IGfrbphRj7ARY4FQG2ODmmCGEPtL0-SpJNpptA
+
 ### Create user1
 POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
 
 {
@@ -17,6 +20,7 @@ Content-Type: application/json
 
 ### Create user2
 POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
 
 {

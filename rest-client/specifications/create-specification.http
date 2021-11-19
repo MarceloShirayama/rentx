@@ -3,12 +3,12 @@
 @url_base=http://{{host}}:{{port}}
 @path=specifications
 
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyODEwMDYsImV4cCI6MTYzNzM2NzQwNiwic3ViIjoiZjZlZDk0MTItYTBmNS00MjE4LWI1ZmYtZTM1OTk1Y2NiM2RkIn0.Jr7RmeCADtrD763vCANodTupIivE6RxFlFe9kdPq_g8
+@token_admin_seed=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzczMTkyNjcsImV4cCI6MTYzNzQwNTY2Nywic3ViIjoiM2FkYzJiMWYtN2UxMS00MGRlLThlYjUtNWZkZWM3MWE4Yjc5In0.TmgB4IGfrbphRj7ARY4FQG2ODmmCGEPtL0-SpJNpptA
 @token_invalid=eyJhbGciOiJIUzI1NiIs.eyJTgtMzEzMS00M2FjLThkM.QKsAcSaTgoxOS8PG32txDqH
 
 ### Create specification
 POST {{url_base}}/{{path}}
-Authorization: Bearer {{token}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ### Create specification
 POST {{url_base}}/{{path}}
-Authorization: Bearer {{token}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ### Create specification
 POST {{url_base}}/{{path}}
-Authorization: Bearer {{token}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
 
 {
