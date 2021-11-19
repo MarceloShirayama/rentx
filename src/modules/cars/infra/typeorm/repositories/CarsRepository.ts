@@ -1,6 +1,6 @@
-import { CreateCarDTO } from 'src/modules/cars/dtos/CreateCarDTO'
-import { ICarsRepository } from 'src/modules/cars/repositories/ICarsRepository'
 import { getRepository, Repository } from 'typeorm'
+import { CreateCarDTO } from '../../../dtos/CreateCarDTO'
+import { ICarsRepository } from '../../../repositories/ICarsRepository'
 import { Car } from '../entities/Car'
 
 export class CarsRepository implements ICarsRepository {
