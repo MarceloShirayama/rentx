@@ -1,3 +1,4 @@
+import { AppError } from '../../../../shared/infra/errors/AppError'
 import { CarsRepositoryInMemory } from '../../repositories/in-memory/CarsRepositoryInMemory'
 import { CreateCarUseCase } from './CreateCarUseCase'
 
@@ -49,6 +50,6 @@ describe('Create Car', () => {
       await createCarUseCase.execute(fakeCar)
 
       await carsRepository.findByLicensePlate(fakeCar.license_plate)
-    }).rejects.toBeInstanceOf(Error)
+    }).rejects.toBeInstanceOf(AppError)
   })
 })

@@ -26,7 +26,8 @@ export class CreateCarUseCase {
 
     if (carAlreadyExists)
       throw new AppError(
-        `Car license plate ${data.license_plate} already exists`
+        `Car license plate ${data.license_plate} already exists`,
+        409
       )
 
     this.carsRepository.create({ ...data })

@@ -27,11 +27,11 @@ export class AuthenticateUserUseCase {
   async execute({ email, password }: RequestUserDTO): Promise<ResponseUserDTO> {
     const userExists = await this.usersRepository.findByEmail(email)
 
-    if (!userExists) throw new AppError('Email or password incorrect')
+    if (!userExists) throw new AppError('Email or password incorrect', 401)
 
     const passwordMatch = await compare(password, userExists.password)
 
-    if (!passwordMatch) throw new AppError('Email or password incorrect')
+    if (!passwordMatch) throw new AppError('Email or password incorrect', 401)
 
     const token = sign({}, String(process.env.SECRET_KEY), {
       subject: userExists.id,
