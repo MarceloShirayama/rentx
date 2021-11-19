@@ -17,4 +17,10 @@ export class CarsRepositoryInMemory implements ICarsRepository {
 
     return car
   }
+
+  async list(): Promise<Car[]> {
+    const cars = this.cars
+
+    return cars
+  }
 }

@@ -20,7 +20,7 @@
 
 #### - **RF** => Requisitos Funcionais
 
-- [ ] Deve ser possível listar todos os carros.
+- [x] Deve ser possível listar todos os carros.
 - [ ] Deve ser possível listar todos os carros disponíveis.
 - [ ] Deve ser possível listar todos os carros por nome.
 - [ ] Deve ser possível listar todos os carros por marca.

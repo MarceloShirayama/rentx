@@ -21,4 +21,10 @@ export class CarsRepository implements ICarsRepository {
 
     return car
   }
+
+  list(): Promise<Car[]> {
+    const cars = this.repository.find()
+
+    return cars
+  }
 }
