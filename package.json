@@ -12,7 +12,8 @@
     "migration:run": "NODE_ENV=local npm run typeorm -- migration:run",
     "migration:revert": "NODE_ENV=local npm run typeorm -- migration:revert",
     "test": "jest",
-    "test:unit": "jest --watch"
+    "test:unit": "jest --watch",
+    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "keywords": [],
   "author": "",
