@@ -9,6 +9,8 @@ export class ListCarsUseCase {
     private carsRepository: ICarsRepository
   ) {}
 
+  // TODO: list all cars by name, category_id and brand
+  // TODO: merge listCarUse and listAvailableCarsUse
   async execute(): Promise<Car[]> {
     const cars = await this.carsRepository.list()
 
