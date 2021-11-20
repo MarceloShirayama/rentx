@@ -1,8 +1,9 @@
 import { AppError } from '../../../../shared/infra/errors/AppError'
+import { ICategoriesRepository } from '../../repositories/ICategoriesRepository'
 import { CategoriesRepositoryInMemory } from '../../repositories/in-memory/CategoriesRepositoryInMemory'
 import { CreateCategoryUseCase } from './CreateCategoryUseCase'
 
-let categoriesRepositoryInMemory: CategoriesRepositoryInMemory
+let categoriesRepositoryInMemory: ICategoriesRepository
 let createCategoryUseCase: CreateCategoryUseCase
 
 describe('Create Category', () => {

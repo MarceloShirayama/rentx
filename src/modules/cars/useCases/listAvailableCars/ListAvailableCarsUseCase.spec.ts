@@ -1,9 +1,10 @@
+import { ICarsRepository } from '../../repositories/ICarsRepository'
 import { CarsRepositoryInMemory } from '../../repositories/in-memory/CarsRepositoryInMemory'
 import { CreateCarUseCase } from '../createCar/CreateCarUseCase'
 import { ListAvailableCarsUseCase } from './ListAvailableCarsUseCase'
 
 describe('List Available Cars', () => {
-  let carsRepository: CarsRepositoryInMemory
+  let carsRepository: ICarsRepository
   let listAvailableCars: ListAvailableCarsUseCase
   let createCarUseCase: CreateCarUseCase
 

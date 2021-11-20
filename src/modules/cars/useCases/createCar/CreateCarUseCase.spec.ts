@@ -1,8 +1,9 @@
 import { AppError } from '../../../../shared/infra/errors/AppError'
+import { ICarsRepository } from '../../repositories/ICarsRepository'
 import { CarsRepositoryInMemory } from '../../repositories/in-memory/CarsRepositoryInMemory'
 import { CreateCarUseCase } from './CreateCarUseCase'
 
-let carsRepository: CarsRepositoryInMemory
+let carsRepository: ICarsRepository
 let createCarUseCase: CreateCarUseCase
 
 describe('Create Car', () => {

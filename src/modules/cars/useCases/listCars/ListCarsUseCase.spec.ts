@@ -1,8 +1,9 @@
+import { ICarsRepository } from '../../repositories/ICarsRepository'
 import { CarsRepositoryInMemory } from '../../repositories/in-memory/CarsRepositoryInMemory'
 import { CreateCarUseCase } from '../createCar/CreateCarUseCase'
 import { ListCarsUseCase } from './ListCarsUseCase'
 
-let carsRepository: CarsRepositoryInMemory
+let carsRepository: ICarsRepository
 let listCarsUseCase: ListCarsUseCase
 let createCarUseCase: CreateCarUseCase
 

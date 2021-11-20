@@ -1,10 +1,11 @@
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { CreateUserDTO } from '../../dtos/CreateUserDTO'
 import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepositoryInMemory'
+import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { CreateUserUseCase } from '../CreateUser/CreateUserUseCase'
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase'
 
-let usersRepositoryInMemory: UsersRepositoryInMemory
+let usersRepositoryInMemory: IUsersRepository
 let authenticateUserUseCase: AuthenticateUserUseCase
 let createUserUseCase: CreateUserUseCase
 
