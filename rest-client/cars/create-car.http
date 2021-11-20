@@ -3,7 +3,7 @@
 @url_base=http://{{host}}:{{port}}
 @path=cars
 
-@token_admin_seed=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzczMTkyNjcsImV4cCI6MTYzNzQwNTY2Nywic3ViIjoiM2FkYzJiMWYtN2UxMS00MGRlLThlYjUtNWZkZWM3MWE4Yjc5In0.TmgB4IGfrbphRj7ARY4FQG2ODmmCGEPtL0-SpJNpptA
+@token_admin_seed=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mzc0MjI0NTMsImV4cCI6MTcyMzgyMjQ1Mywic3ViIjoiM2FkYzJiMWYtN2UxMS00MGRlLThlYjUtNWZkZWM3MWE4Yjc5In0.JVbXIuqqG8BUDIxFJsauI9id3jZXWLH15dPHi0pfD9w
 @token_not_admin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyODEwMDYsImV4cCI6MTYzNzM2NzQwNiwic3ViIjoiZjZlZDk0MTItYTBmNS00MjE4LWI1ZmYtZTM1OTk1Y2NiM2RkIn0.Jr7RmeCADtrD763vCANodTupIivE6RxFlFe9kdPq_g8
 
 ### Create car Audi A3
@@ -21,7 +21,22 @@ Content-Type: application/json
   "category_id": "4e09942c-5d2f-48ba-8d79-e2dce19406ef"
 }
 
-### Create car
+### Create car Audi A4
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
+Content-Type: application/json
+
+{
+  "name": "A4",
+  "description": "carro sedã 4 portas",
+  "daily_rate": "500",
+  "license_plate": "AAA-0004",
+  "fine_amount": "350",
+  "brand": "Audi",
+  "category_id": "4e09942c-5d2f-48ba-8d79-e2dce19406ef"
+}
+
+### Create car Fusca
 POST {{url_base}}/{{path}}
 Authorization: Bearer {{token_admin_seed}}
 Content-Type: application/json
@@ -32,8 +47,24 @@ Content-Type: application/json
   "daily_rate": "100",
   "license_plate": "FUS-0001",
   "fine_amount": "50",
-  "brand": "",
+  "brand": "Volkswagen",
   "category_id": "9722e841-d8a1-4e0c-a2d5-1be75deb0cdc"
+}
+
+
+### Create car Jetta
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
+Content-Type: application/json
+
+{
+  "name": "Jetta",
+  "description": "carro sedã 4 portas",
+  "daily_rate": "100",
+  "license_plate": "JET-0001",
+  "fine_amount": "50",
+  "brand": "Volkswagen",
+  "category_id": "4e09942c-5d2f-48ba-8d79-e2dce19406ef"
 }
 
 ### Create car user not admin

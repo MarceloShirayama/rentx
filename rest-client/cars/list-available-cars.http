@@ -1,0 +1,19 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=cars/available
+
+### Get all available cars
+GET {{url_base}}/{{path}}
+
+### Get all available cars by name
+GET {{url_base}}/{{path}}
+?name=A3
+
+### Get all available by brand
+GET {{url_base}}/{{path}}
+?brand=Volkswagen
+
+### Get all available by category_id
+GET {{url_base}}/{{path}}
+?category_id=4e09942c-5d2f-48ba-8d79-e2dce19406ef

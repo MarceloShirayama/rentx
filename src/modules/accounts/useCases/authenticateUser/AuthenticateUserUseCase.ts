@@ -35,7 +35,7 @@ export class AuthenticateUserUseCase {
 
     const token = sign({}, String(process.env.SECRET_KEY), {
       subject: userExists.id,
-      expiresIn: '1d'
+      expiresIn: '1000d'
     })
 
     const user = {

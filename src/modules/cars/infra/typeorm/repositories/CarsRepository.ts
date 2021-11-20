@@ -1,6 +1,9 @@
 import { getRepository, Repository } from 'typeorm'
 import { CreateCarDTO } from '../../../dtos/CreateCarDTO'
-import { ICarsRepository } from '../../../repositories/ICarsRepository'
+import {
+  filterCarDTO,
+  ICarsRepository
+} from '../../../repositories/ICarsRepository'
 import { Car } from '../entities/Car'
 
 export class CarsRepository implements ICarsRepository {
@@ -28,7 +31,22 @@ export class CarsRepository implements ICarsRepository {
     return cars
   }
 
-  async listAvailable(): Promise<Car[]> {
-    throw new Error('Method not implemented.')
+  async listAvailable(filters: filterCarDTO): Promise<Car[]> {
+    const { brand, name, category_id } = filters
+
+    const carsQuery = this.repository
+      .createQueryBuilder('cars')
+      .where('available = :available', { available: true })
+
+    if (brand) carsQuery.andWhere('cars.brand = :brand', { brand })
+
+    if (name) carsQuery.andWhere('cars.name = :name', { name })
+
+    if (category_id)
+      carsQuery.andWhere('cars.category_id = :category_id', { category_id })
+
+    const cars = await carsQuery.getMany()
+
+    return cars
   }
 }
