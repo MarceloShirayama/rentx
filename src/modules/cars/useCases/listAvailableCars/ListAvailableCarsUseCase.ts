@@ -1,6 +1,9 @@
 import { inject, injectable } from 'tsyringe'
 import { Car } from '../../infra/typeorm/entities/Car'
-import { ICarsRepository } from '../../repositories/ICarsRepository'
+import {
+  filterCarDTO,
+  ICarsRepository
+} from '../../repositories/ICarsRepository'
 
 @injectable()
 export class ListAvailableCarsUseCase {
@@ -9,8 +12,12 @@ export class ListAvailableCarsUseCase {
     private carsRepository: ICarsRepository
   ) {}
 
-  async execute(): Promise<Car[]> {
-    const cars = await this.carsRepository.listAvailable()
+  async execute({ name, brand, category_id }: filterCarDTO): Promise<Car[]> {
+    const cars = await this.carsRepository.listAvailable({
+      name,
+      brand,
+      category_id
+    })
 
     return cars
   }

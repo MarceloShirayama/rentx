@@ -1,6 +1,6 @@
 import { CreateCarDTO } from '../../dtos/CreateCarDTO'
 import { Car } from '../../infra/typeorm/entities/Car'
-import { ICarsRepository } from '../ICarsRepository'
+import { filterCarDTO, ICarsRepository } from '../ICarsRepository'
 
 export class CarsRepositoryInMemory implements ICarsRepository {
   cars: Car[] = []
@@ -24,8 +24,20 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     return cars
   }
 
-  async listAvailable(): Promise<Car[]> {
-    const cars = this.cars.filter((car) => car.available === true)
+  async listAvailable(filters: filterCarDTO): Promise<Car[]> {
+    const { name, brand, category_id } = filters
+    const existFilter = !!name || brand || category_id
+
+    // TODO: improve the code by refactoring various ifs
+    const cars = this.cars
+      .filter((car) => car.available === true)
+      .filter((car) => {
+        if (!!category_id && car.category_id === category_id) return car
+        if (!!brand && car.brand === brand) return car
+        if (!!name && car.name === name) return car
+        if (existFilter) return null
+        return car
+      })
 
     return cars
   }
