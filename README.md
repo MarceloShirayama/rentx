@@ -21,10 +21,13 @@
 #### - **RF** => Requisitos Funcionais
 
 - [x] Deve ser possível listar todos os carros.
-- [x] Deve ser possível listar todos os carros disponíveis.
 - [ ] Deve ser possível listar todos os carros por nome.
 - [ ] Deve ser possível listar todos os carros por marca.
 - [ ] Deve ser possível listar todos os carros por categoria.
+- [x] Deve ser possível listar todos os carros disponíveis.
+- [ ] Deve ser possível listar todos os carros disponíveis por nome.
+- [ ] Deve ser possível listar todos os carros disponíveis por marca.
+- [ ] Deve ser possível listar todos os carros disponíveis por categoria.
 
 #### - **RNF** => Requisitos Não Funcionais
 
