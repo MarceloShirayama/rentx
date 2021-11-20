@@ -5,4 +5,5 @@ export interface ICarsRepository {
   create(data: CreateCarDTO): Promise<void>
   findByLicensePlate(licensePlate: string): Promise<Car | undefined>
   list(): Promise<Car[]>
+  listAvailable(): Promise<Car[]>
 }

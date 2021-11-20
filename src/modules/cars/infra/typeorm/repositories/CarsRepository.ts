@@ -27,4 +27,8 @@ export class CarsRepository implements ICarsRepository {
 
     return cars
   }
+
+  async listAvailable(): Promise<Car[]> {
+    throw new Error('Method not implemented.')
+  }
 }
