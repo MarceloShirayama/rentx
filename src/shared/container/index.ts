@@ -24,3 +24,8 @@ container.registerSingleton<IUsersRepository>(
 )
 
 container.registerSingleton<ICarsRepository>('CarsRepository', CarsRepository)
+
+container.registerSingleton<ISpecificationsRepository>(
+  'SpecificationsRepository',
+  SpecificationsRepository
+)

@@ -4,6 +4,7 @@ import {
   filterCarDTO,
   ICarsRepository
 } from '../../../repositories/ICarsRepository'
+import { CreateCarSpecificationDTO } from '../../../repositories/ISpecificationsRepository'
 import { Car } from '../entities/Car'
 
 export class CarsRepository implements ICarsRepository {
@@ -48,5 +49,13 @@ export class CarsRepository implements ICarsRepository {
     const cars = await carsQuery.getMany()
 
     return cars
+  }
+
+  async findById({
+    car_id
+  }: CreateCarSpecificationDTO): Promise<Car | undefined> {
+    const car = await this.repository.findOne(car_id)
+
+    return car
   }
 }

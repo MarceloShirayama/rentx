@@ -1,9 +1,11 @@
 import { CreateCarDTO } from '../../dtos/CreateCarDTO'
 import { Car } from '../../infra/typeorm/entities/Car'
 import { filterCarDTO, ICarsRepository } from '../ICarsRepository'
+import { CreateCarSpecificationDTO } from '../ISpecificationsRepository'
 
 export class CarsRepositoryInMemory implements ICarsRepository {
   cars: Car[] = []
+
   async create(data: CreateCarDTO): Promise<void> {
     const car = new Car()
 
@@ -40,5 +42,13 @@ export class CarsRepositoryInMemory implements ICarsRepository {
       })
 
     return cars
+  }
+
+  async findById({
+    car_id
+  }: CreateCarSpecificationDTO): Promise<Car | undefined> {
+    const car = this.cars.find((car) => car.id === car_id)
+
+    return car
   }
 }
