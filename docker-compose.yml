@@ -19,6 +19,7 @@ services:
     container_name: ${PROJECT_NAME}
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
+      - 9229:9229
     volumes:
       - .:/usr/app
     network_mode: host
