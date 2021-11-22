@@ -1,0 +1,38 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=cars/specifications
+
+@token_admin_seed={{$dotenv TOKEN_SEED_ADMIN}}
+@token_not_admin=eyJhbGciOsInR5cCI6ICJ9.eyJpYXQiOjE2MzcyO2RkIn0.Jr7RmeCADkdPq_g8
+
+### Create specification car A3
+@car_id_1=38bc9851-27d6-42b6-aca8-858df1d914a2
+
+POST {{url_base}}/{{path}}/{{car_id_1}}
+Authorization: Bearer {{token_admin_seed}}
+Content-Type: application/json
+
+{
+  "specification_id": [
+    "65444e26-81ac-4880-9fdb-1b9c63afb2b7",
+    "6571aec5-3b71-4b9a-a704-8da60a774c94",
+    "89850d84-b006-47d5-93fe-669462b3612d"
+  ]
+}
+
+
+### Create specification car Jetta
+@car_id_2=f171d319-50bd-47cc-91a8-a735d87ae386
+
+POST {{url_base}}/{{path}}/{{car_id_2}}
+Authorization: Bearer {{token_admin_seed}}
+Content-Type: application/json
+
+{
+  "specification_id": [
+    "65444e26-81ac-4880-9fdb-1b9c63afb2b7",
+    "6571aec5-3b71-4b9a-a704-8da60a774c94",
+    "89850d84-b006-47d5-93fe-669462b3612d"
+  ]
+}

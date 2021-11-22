@@ -40,16 +40,16 @@
 
 #### - **RF** => Requisitos Funcionais
 
-- [ ] Deve ser possível cadastrar uma especificação para um carro.
+- [x] Deve ser possível cadastrar uma especificação para um carro.
 - [ ] Deve ser possível lista todas as especificações.
 
 #### - **RNF** => Requisitos Não Funcionais
 
 #### - **RN** => Regra de Negócio
 
-- [ ] Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
+- [x] Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
 - [ ] Não deve ser possível cadastrar uma especificação já existente para o mesmo carro.
-- [ ] O usuário responsável pelo cadastro deve ser um usuário administrador.
+- [x] O usuário responsável pelo cadastro deve ser um usuário administrador.
 
 ---
 

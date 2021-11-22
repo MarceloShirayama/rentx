@@ -3,8 +3,8 @@
 @url_base=http://{{host}}:{{port}}
 @path=specifications
 
-@token_admin_seed=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzczMTkyNjcsImV4cCI6MTYzNzQwNTY2Nywic3ViIjoiM2FkYzJiMWYtN2UxMS00MGRlLThlYjUtNWZkZWM3MWE4Yjc5In0.TmgB4IGfrbphRj7ARY4FQG2ODmmCGEPtL0-SpJNpptA
-@token_invalid=eyJhbGciOiJIUzI1NiIs.eyJTgtMzEzMS00M2FjLThkM.QKsAcSaTgoxOS8PG32txDqH
+@token_admin_seed={{$dotenv TOKEN_SEED_ADMIN}}
+@token_invalid=eyJhbGciOiJIUzI1NiIs.eyJTgtMzEzMS0M2FjLThkM.QKsAcSaTgOS8PG32txDqH
 
 ### Create specification
 POST {{url_base}}/{{path}}

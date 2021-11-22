@@ -3,13 +3,13 @@
 @url_base=http://{{host}}:{{port}}
 @path=users/avatar
 
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcwMTU3NzIsImV4cCI6MTYzNzEwMjE3Miwic3ViIjoiYzI2OTY1NzQtOThjMy00ODljLWJjNzYtMzNmZDRkOWUyMWY4In0.2SREsLqu7FR_gT7MxRyOzRPE0lHydoe8c96wgNHVd9U
+@token_admin_seed={{$dotenv TOKEN_SEED_ADMIN}}
 @token_invalid=nR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzYNDYsImV4cCI6.NVUZVgs2GmeCYZcqpagr
 
 
 ### Import avatar
 PATCH  {{url_base}}/{{path}}
-Authorization: Bearer {{token}}
+Authorization: Bearer {{token_admin_seed}}
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
