@@ -1,11 +1,9 @@
 import { AppError } from '../../../../shared/infra/errors/AppError'
+import { dateDiffInHours } from '../../../../utils/date'
 import { RequestRentalDTO } from '../../dtos/rentalDTOs'
 import { IRentalsRepository } from '../../repositories/IRentalsRepository'
 
 const minimumRentalHours = 24
-const dateDiffInHours = (dateEnd: Date, dateStart: Date) =>
-  Math.round(Math.abs(dateEnd.getTime() - dateStart.getTime()) / 3600000)
-
 export class CreateRentalUseCase {
   constructor(private rentalsRepository: IRentalsRepository) {}
 
