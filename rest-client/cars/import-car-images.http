@@ -1,0 +1,33 @@
+# @host={{$dotenv SERVER_HOST}}
+# @port={{$dotenv SERVER_PORT}}
+# @url_base=http://{{host}}:{{port}}
+# @path=cars/images
+
+# @token_admin_seed={{$dotenv TOKEN_SEED_ADMIN}}
+
+
+# ### Import images
+# @id_car_1=38bc9851-27d6-42b6-aca8-858df1d914a2
+
+# PATCH  {{url_base}}/{{path}}/{{id_car_1}}
+# Authorization: Bearer {{token_admin_seed}}
+# Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW
+# Content-Disposition: form-data; name="text"
+
+# audia3
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW
+# Content-Disposition: form-data; name="images"; filename="audi-a3.png"
+# Content-Type: image/png
+
+# < /home/marcelo/Downloads/carsImages/audi-a3.png
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+# audia4
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW
+# Content-Disposition: form-data; name="images"; filename="audi-a4.png"
+# Content-Type: image/png
+
+# < /home/marcelo/Downloads/carsImages/audi-a4.png
+# ------WebKitFormBoundary7MA4YWxkTrZu0gW--

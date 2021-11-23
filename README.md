@@ -57,16 +57,16 @@
 
 #### - **RF** => Requisitos Funcionais
 
-- [ ] Deve ser possível cadastrar a imagem do carro.
+- [x] Deve ser possível cadastrar a imagem do carro.
 
 #### - **RNF** => Requisitos Não Funcionais
 
-- [ ] Utilizar o multer para upload dos arquivos.
+- [x] Utilizar o multer para upload dos arquivos.
 
 #### - **RN** => Regra de Negócio
 
-- [ ] O usuário deve poder cadastrar mais de uma imagem para o mesmo carro.
-- [ ] O usuário responsável pelo cadastro deve ser um usuário administrado.
+- [x] O usuário deve poder cadastrar mais de uma imagem para o mesmo carro.
+- [x] O usuário responsável pelo cadastro deve ser um usuário administrado.
 
 
 ---
