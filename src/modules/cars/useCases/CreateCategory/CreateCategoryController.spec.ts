@@ -40,15 +40,9 @@ const createUserAdminSeed = async () => {
 describe('Create Category Controller', () => {
   jest.setTimeout(30000)
   beforeAll(async () => {
-    try {
-      connection = await connectionDatabase()
-
-      await connection.runMigrations()
-
-      await createUserAdminSeed()
-    } catch (error) {
-      console.log(`{ messageCreateAdminSeed: ${error} }`)
-    }
+    connection = await connectionDatabase()
+    await connection.runMigrations()
+    await createUserAdminSeed()
   })
 
   afterAll(async () => {
@@ -64,15 +58,14 @@ describe('Create Category Controller', () => {
 
     const { token } = responseToken.body
 
-    const response = await request(app)
+    await request(app)
       .post('/categories')
       .send({
         name: 'any category name',
         description: 'any description category name'
       })
       .set({ authorization: `Bearer ${token}` })
-
-    expect(response.status).toBe(201)
+      .expect(201)
   })
 
   it('Should not be able to create a new category with an already registered name', async () => {
@@ -82,14 +75,13 @@ describe('Create Category Controller', () => {
 
     const { token } = responseToken.body
 
-    const response = await request(app)
+    await request(app)
       .post('/categories')
       .send({
         name: 'any category name',
         description: 'other description category name'
       })
       .set({ authorization: `Bearer ${token}` })
-
-    expect(response.status).toBe(409)
+      .expect(409)
   })
 })
