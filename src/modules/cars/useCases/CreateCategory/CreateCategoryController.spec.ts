@@ -44,6 +44,8 @@ describe('Create Category Controller', () => {
       connection = await connectionDatabase()
 
       await connection.runMigrations()
+
+      await createUserAdminSeed()
     } catch (error) {
       console.log(`{ messageCreateAdminSeed: ${error} }`)
     }
@@ -56,8 +58,6 @@ describe('Create Category Controller', () => {
   })
 
   it('Should be able to create a new category', async () => {
-    await createUserAdminSeed()
-
     const responseToken = await request(app)
       .post('/sessions')
       .send({ email: `${emailAdminSeed}`, password: `${passwordAdminSeed}` })
@@ -67,11 +67,29 @@ describe('Create Category Controller', () => {
     const response = await request(app)
       .post('/categories')
       .send({
-        name: 'Category Supertest',
-        description: 'Description Category Supertest'
+        name: 'any category name',
+        description: 'any description category name'
       })
       .set({ authorization: `Bearer ${token}` })
 
     expect(response.status).toBe(201)
+  })
+
+  it('Should not be able to create a new category with an already registered name', async () => {
+    const responseToken = await request(app)
+      .post('/sessions')
+      .send({ email: `${emailAdminSeed}`, password: `${passwordAdminSeed}` })
+
+    const { token } = responseToken.body
+
+    const response = await request(app)
+      .post('/categories')
+      .send({
+        name: 'any category name',
+        description: 'other description category name'
+      })
+      .set({ authorization: `Bearer ${token}` })
+
+    expect(response.status).toBe(409)
   })
 })
