@@ -81,8 +81,9 @@
 
 #### - **RN** => Regra de Negócio
 
-- [ ] O aluguel de carro deve ter duração minima de 24 horas.
+- [x] O aluguel de carro deve ter duração minima de 24 horas.
 - [x] Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário.
 - [x] Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro.
+- [x] O usuário deve estar logado na aplicação.
 
 ---

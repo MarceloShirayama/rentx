@@ -1,11 +1,17 @@
+import { inject, injectable } from 'tsyringe'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { dateDiffInHours } from '../../../../utils/date'
 import { RequestRentalDTO } from '../../dtos/rentalDTOs'
 import { IRentalsRepository } from '../../repositories/IRentalsRepository'
 
 const minimumRentalHours = 24
+
+@injectable()
 export class CreateRentalUseCase {
-  constructor(private rentalsRepository: IRentalsRepository) {}
+  constructor(
+    @inject('RentalsRepository')
+    private rentalsRepository: IRentalsRepository
+  ) {}
 
   async execute(data: RequestRentalDTO): Promise<void> {
     const unavailableCar = await this.rentalsRepository.findOpenRentalByCar(

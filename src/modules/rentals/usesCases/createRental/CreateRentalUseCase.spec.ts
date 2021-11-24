@@ -22,6 +22,7 @@ describe('Create Rental', () => {
       car_id: 'any_car_id',
       expect_return_date: addHoursInCurrentDate(24)
     }
+
     await createRentalUseCase.execute(fakeRentalData)
 
     const rentalInMemory = await rentalsRepository.findOpenRentalByUser(

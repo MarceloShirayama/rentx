@@ -1,0 +1,34 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=rentals
+
+### Create
+@token_user_id_1=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mzc3MTAwNzAsImV4cCI6MTcyNDExMDA3MCwic3ViIjoiMmQxOWYxYWQtMzE3Ni00MGMzLWFhOGItMzA2MzAzMGMyYzkxIn0.xn8j-7hjPKJwlf9Em57_kl3rF5-IN4nPU0zol2bqUV4
+@car_id_A4=62ee531e-864a-4396-8c4e-1a5a075a21b2
+@user_id_1=42a451aa-7967-4e1b-8ae1-e91cdc6922ac
+
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_user_id_1}}
+Content-Type: application/json
+
+{
+  "car_id": "{{car_id_A4}}",
+  "user_id": "{{user_id_1}}",
+  "expect_return_date": "2021-11-25T23:52:29.275Z"
+}
+
+### Create
+@token_user_id_2=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mzc3MTAxNTQsImV4cCI6MTcyNDExMDE1NCwic3ViIjoiNDJhNDUxYWEtNzk2Ny00ZTFiLThhZTEtZTkxY2RjNjkyMmFjIn0.UKU104csESmYsYfXt06nTADjyLP1os2sWyFTXwxjdxE
+@car_id_Jetta=f171d319-50bd-47cc-91a8-a735d87ae386
+@user_id_2=2e10742f-cdb9-4736-afee-dde76b5cf875
+
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_user_id_2}}
+Content-Type: application/json
+
+{
+  "car_id": "{{car_id_Jetta}}",
+  "user_id": "{{user_id_2}}",
+  "expect_return_date": "2021-11-25T00:00:00.000Z"
+}
