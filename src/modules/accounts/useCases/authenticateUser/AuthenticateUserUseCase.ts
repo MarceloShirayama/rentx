@@ -1,6 +1,7 @@
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
+import { jwtConfig } from '../../../../config/auth'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 
@@ -33,9 +34,12 @@ export class AuthenticateUserUseCase {
 
     if (!passwordMatch) throw new AppError('Email or password incorrect', 401)
 
-    const token = sign({}, String(process.env.SECRET_KEY), {
+    const secret = String(jwtConfig.secret)
+    const expiresIn = jwtConfig.expiresIn
+
+    const token = sign({}, secret, {
       subject: userExists.id,
-      expiresIn: '1000d'
+      expiresIn
     })
 
     const user = {

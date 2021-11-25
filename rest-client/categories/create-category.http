@@ -24,3 +24,15 @@ Content-Type: application/json
   "name": "Van",
   "description": "Categoria de carro de utilitário"
 }
+
+
+
+### Create category Van
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
+Content-Type: application/json
+
+{
+  "name": "Caminhão",
+  "description": "Categoria de caminhão pequeno tipo baú."
+}
