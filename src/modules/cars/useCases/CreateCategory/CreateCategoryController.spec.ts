@@ -38,7 +38,7 @@ const createUserAdminSeed = async () => {
 }
 
 describe('Create Category Controller', () => {
-  jest.setTimeout(30000)
+  jest.setTimeout(15000)
   beforeAll(async () => {
     connection = await connectionDatabase()
     await connection.runMigrations()
@@ -48,7 +48,7 @@ describe('Create Category Controller', () => {
   afterAll(async () => {
     await connection.dropDatabase()
     await connection.close
-    await new Promise<void>((resolve) => setTimeout(() => resolve(), 10000)) // https://stackoverflow.com/questions/50818367/how-to-fix-err-jest-has-detected-the-following-3-open-handles-potentially-keepin
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 5000)) // https://stackoverflow.com/questions/50818367/how-to-fix-err-jest-has-detected-the-following-3-open-handles-potentially-keepin
   })
 
   it('Should be able to create a new category', async () => {
