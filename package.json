@@ -11,8 +11,8 @@
     "migration:create": "NODE_ENV=local npm run typeorm -- migration:create -- -n",
     "migration:run": "NODE_ENV=local npm run typeorm -- migration:run",
     "migration:revert": "NODE_ENV=local npm run typeorm -- migration:revert",
-    "test": "NODE_ENV=test jest  --detectOpenHandles",
-    "test:unit": "NODE_ENV=test jest --watch --detectOpenHandles",
+    "test": "NODE_ENV=test jest  --detectOpenHandles --maxWorkers=50%",
+    "test:unit": "NODE_ENV=test jest --watch --detectOpenHandles --maxWorkers=50%",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "keywords": [],
