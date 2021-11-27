@@ -6,6 +6,7 @@ import { app } from '../../../../shared/infra/http/app'
 import { connectionDatabase } from '../../../../shared/infra/typeorm'
 
 let connection: Connection
+let token: string
 
 const emailAdminSeed = 'admin_test@mail.com'
 const passwordAdminSeed = 'admin_test'
@@ -43,21 +44,21 @@ describe('Create Category Controller', () => {
     connection = await connectionDatabase()
     await connection.runMigrations()
     await createUserAdminSeed()
-  })
 
-  afterAll(async () => {
-    await connection.dropDatabase()
-    await connection.close
-    await new Promise<void>((resolve) => setTimeout(() => resolve(), 5000)) // https://stackoverflow.com/questions/50818367/how-to-fix-err-jest-has-detected-the-following-3-open-handles-potentially-keepin
-  })
-
-  it('Should be able to create a new category', async () => {
     const responseToken = await request(app)
       .post('/sessions')
       .send({ email: `${emailAdminSeed}`, password: `${passwordAdminSeed}` })
 
-    const { token } = responseToken.body
+    token = responseToken.body.token
+  })
 
+  afterAll(async () => {
+    await connection.dropDatabase()
+    await connection.close()
+    await new Promise<void>((resolve) => setTimeout(() => resolve(), 5000)) // https://stackoverflow.com/questions/50818367/how-to-fix-err-jest-has-detected-the-following-3-open-handles-potentially-keepin
+  })
+
+  it('Should be able to create a new category', async () => {
     await request(app)
       .post('/categories')
       .send({
@@ -69,12 +70,6 @@ describe('Create Category Controller', () => {
   })
 
   it('Should not be able to create a new category with an already registered name', async () => {
-    const responseToken = await request(app)
-      .post('/sessions')
-      .send({ email: `${emailAdminSeed}`, password: `${passwordAdminSeed}` })
-
-    const { token } = responseToken.body
-
     await request(app)
       .post('/categories')
       .send({
