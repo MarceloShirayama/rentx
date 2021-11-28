@@ -1,6 +1,10 @@
 import { CreateCarDTO } from '../../dtos/CreateCarDTO'
 import { Car } from '../../infra/typeorm/entities/Car'
-import { filterCarDTO, ICarsRepository } from '../ICarsRepository'
+import {
+  availableCarDTO,
+  filterCarDTO,
+  ICarsRepository
+} from '../ICarsRepository'
 import { CreateCarSpecificationDTO } from '../ISpecificationsRepository'
 
 export class CarsRepositoryInMemory implements ICarsRepository {
@@ -50,5 +54,11 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     const car = this.cars.find((car) => car.id === car_id)
 
     return car
+  }
+
+  async updateAvailable({ car_id, available }: availableCarDTO): Promise<void> {
+    const carIndex = this.cars.findIndex((car) => car.id === car_id)
+
+    if (carIndex !== -1) this.cars[carIndex].available = available
   }
 }

@@ -1,6 +1,7 @@
 import { getRepository, Repository } from 'typeorm'
 import { CreateCarDTO } from '../../../dtos/CreateCarDTO'
 import {
+  availableCarDTO,
   filterCarDTO,
   ICarsRepository
 } from '../../../repositories/ICarsRepository'
@@ -57,5 +58,15 @@ export class CarsRepository implements ICarsRepository {
     const car = await this.repository.findOne(car_id)
 
     return car
+  }
+
+  async updateAvailable({ car_id, available }: availableCarDTO): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update()
+      .set({ available })
+      .where('id = :id')
+      .setParameters({ id: car_id })
+      .execute()
   }
 }

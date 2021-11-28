@@ -10,12 +10,16 @@ export class CreateRentalController {
 
     const createRentalUseCase = container.resolve(CreateRentalUseCase)
 
-    await createRentalUseCase.execute({
-      user_id: id,
-      car_id,
-      expect_return_date
-    })
+    try {
+      await createRentalUseCase.execute({
+        user_id: id,
+        car_id,
+        expect_return_date
+      })
 
-    return res.status(201).send()
+      return res.status(201).send()
+    } catch (error) {
+      return res.send(error)
+    }
   }
 }
