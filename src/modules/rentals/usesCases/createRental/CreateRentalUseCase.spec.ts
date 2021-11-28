@@ -1,4 +1,5 @@
 import { AppError } from '../../../../shared/infra/errors/AppError'
+import { addHoursInCurrentDate } from '../../../../utils/date'
 import { CreateUserDTO } from '../../../accounts/dtos/CreateUserDTO'
 import { User } from '../../../accounts/infra/typeorm/entities/Users'
 import { UsersRepositoryInMemory } from '../../../accounts/repositories/in-memory/UsersRepositoryInMemory'
@@ -79,9 +80,6 @@ const carFake3: CreateCarDTO = {
   brand: 'any_brand_3',
   category_id: 'any_category_id_3'
 }
-
-const addHoursInCurrentDate = (hours: number) =>
-  new Date(new Date().setHours(new Date().getHours() + hours))
 
 describe('Create Rental', () => {
   beforeAll(async () => {
