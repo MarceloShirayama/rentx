@@ -42,53 +42,53 @@ describe('Authenticate User', () => {
   })
 
   it('Should not be able to authenticate an nonexistent user', async () => {
-    expect(async () => {
-      await authenticateUserUseCase.execute({
+    await expect(
+      authenticateUserUseCase.execute({
         email: 'any_email',
         password: 'any_password'
       })
-    }).rejects.toBeInstanceOf(AppError)
+    ).rejects.toEqual(new AppError('Email or password incorrect', 401))
   })
 
   it('Should not be able to authenticate an user with incorrect password', async () => {
-    expect(async () => {
-      const userFake: CreateUserDTO = {
-        name: 'any_name',
-        password: 'any_password',
-        email: 'any_email@mail.com',
-        driver_license: 'any_driver_license'
-      }
+    const userFake: CreateUserDTO = {
+      name: 'any_name',
+      password: 'any_password',
+      email: 'any_email@mail.com',
+      driver_license: 'any_driver_license'
+    }
 
-      const passwordInvalid = 'password_invalid'
+    const passwordInvalid = 'password_invalid'
 
-      await createUserUseCase.execute(userFake)
+    await createUserUseCase.execute(userFake)
 
-      await authenticateUserUseCase.execute({
+    await expect(
+      authenticateUserUseCase.execute({
         email: userFake.email,
         password: passwordInvalid
       })
-    }).rejects.toBeInstanceOf(AppError)
+    ).rejects.toEqual(new AppError('Email or password incorrect', 401))
   })
 
   it('Should not be able to authenticate an user with incorrect email', async () => {
-    expect(async () => {
-      const userFake: CreateUserDTO = {
-        name: 'any_name',
-        password: 'any_password',
-        email: 'any_email@mail.com',
-        driver_license: 'any_driver_license'
-      }
+    const userFake: CreateUserDTO = {
+      name: 'any_name',
+      password: 'any_password',
+      email: 'any_email@mail.com',
+      driver_license: 'any_driver_license'
+    }
 
-      const passwordFake = userFake.password
+    const passwordFake = userFake.password
 
-      const emailInvalid = 'email_invalid'
+    const emailInvalid = 'email_invalid'
 
-      await createUserUseCase.execute(userFake)
+    await createUserUseCase.execute(userFake)
 
-      await authenticateUserUseCase.execute({
+    await expect(
+      authenticateUserUseCase.execute({
         email: emailInvalid,
         password: passwordFake
       })
-    }).rejects.toBeInstanceOf(AppError)
+    ).rejects.toEqual(new AppError('Email or password incorrect', 401))
   })
 })

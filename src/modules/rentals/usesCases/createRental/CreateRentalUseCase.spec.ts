@@ -143,9 +143,9 @@ describe('Create Rental', () => {
       expect_return_date: addHoursInCurrentDate(24)
     }
 
-    expect(async () => {
-      await createRentalUseCase.execute(fakeRentalData)
-    }).rejects.toBeInstanceOf(AppError)
+    await expect(createRentalUseCase.execute(fakeRentalData)).rejects.toEqual(
+      new AppError('Car not found', 409)
+    )
   })
 
   it('Should not be able to create a new rental if car is unavailable', async () => {
@@ -156,9 +156,9 @@ describe('Create Rental', () => {
     }
 
     expect(car_1?.available).toBeFalsy()
-    expect(async () => {
-      await createRentalUseCase.execute(fakeRentalData)
-    }).rejects.toBeInstanceOf(AppError)
+    await expect(createRentalUseCase.execute(fakeRentalData)).rejects.toEqual(
+      new AppError('Car is unavailable', 401)
+    )
   })
 
   it('Should not be able to create a new rental if already exists open rental to user', async () => {
@@ -168,9 +168,10 @@ describe('Create Rental', () => {
       expect_return_date: addHoursInCurrentDate(24)
     }
 
-    expect(async () => {
-      await createRentalUseCase.execute(fakeRentalData)
-    }).rejects.toBeInstanceOf(AppError)
+    await expect(createRentalUseCase.execute(fakeRentalData)).rejects.toEqual(
+      new AppError('Already exists open rental to user', 401)
+    )
+
     expect(car_2?.available).toBeTruthy()
   })
 
@@ -180,9 +181,10 @@ describe('Create Rental', () => {
       car_id: car_3_id,
       expect_return_date: addHoursInCurrentDate(23)
     }
-    expect(async () => {
-      await createRentalUseCase.execute(fakeRentalData)
-    }).rejects.toBeInstanceOf(AppError)
+    await expect(createRentalUseCase.execute(fakeRentalData)).rejects.toEqual(
+      new AppError('The car rental must have a minimum duration of 24 hours.')
+    )
+
     expect(car_3?.available).toBeTruthy()
   })
 })

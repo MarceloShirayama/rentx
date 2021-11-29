@@ -35,22 +35,23 @@ describe('Create Car', () => {
   })
 
   it('Should not be able to create a new car if already exists an car with equal license plate', async () => {
-    expect(async () => {
-      const fakeCar = {
-        name: 'any_name_car',
-        description: 'any_description',
-        daily_rate: 100,
-        license_plate: 'ABC-1234',
-        fine_amount: 60,
-        brand: 'any_brand',
-        category_id: 'any_id'
-      }
+    const fakeCar = {
+      name: 'any_name_car',
+      description: 'any_description',
+      daily_rate: 100,
+      license_plate: 'ABC-1234',
+      fine_amount: 60,
+      brand: 'any_brand',
+      category_id: 'any_id'
+    }
 
-      await createCarUseCase.execute(fakeCar)
+    await createCarUseCase.execute(fakeCar)
 
-      await createCarUseCase.execute(fakeCar)
-
-      await carsRepository.findByLicensePlate(fakeCar.license_plate)
-    }).rejects.toBeInstanceOf(AppError)
+    await expect(createCarUseCase.execute(fakeCar)).rejects.toEqual(
+      new AppError(
+        `Car license plate ${fakeCar.license_plate} already exists`,
+        409
+      )
+    )
   })
 })
