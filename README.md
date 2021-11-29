@@ -99,12 +99,28 @@
 
 #### - **RN** => Regra de Negócio
 
-- [ ] Se o carro for devolvido com menos de 24 horas, deverá ser cobrada a diária completa.
-- [ ] Ao realizar a devolução, o carro deve estar disponível para outro aluguel.
-- [ ] Ao realizar a devolução, o usuário deve estar liberado para outro aluguel.
-- [ ] Ao realizar a devolução, deverá ser calculado o total do aluguel.
-- [ ] Caso o horário de devolução do carro seja superior ao horário previsto de entrega, deverá ser cobrado multa proporcional aos dias de atraso.
-- [ ] Caso exista multa, a mesma deverá ser somada ao total do aluguel.
+- [x] Se o carro for devolvido com menos de 24 horas, deverá ser cobrada a diária completa.
+- [x] Ao realizar a devolução, o carro deve estar disponível para outro aluguel.
+- [x] Ao realizar a devolução, o usuário deve estar liberado para outro aluguel.
+- [x] Ao realizar a devolução, deverá ser calculado o total do aluguel.
+- [x] Caso o horário de devolução do carro seja superior ao horário previsto de entrega, deverá ser cobrado multa proporcional aos dias de atraso.
+- [x] Caso exista multa, a mesma deverá ser somada ao total do aluguel.
+- [x] O usuário deve estar logado na aplicação.
+
+---
+
+### Listagem de aluguéis para usuário
+
+#### - **RF** => Requisitos Funcionais
+
+- [] Deve ser possível realizar a busca de todos os aluguéis para um usuário.
+
+#### - **RNF** => Requisitos Não Funcionais
+
+#### - **RN** => Regra de Negócio
+
 - [ ] O usuário deve estar logado na aplicação.
 
 ---
+
+
