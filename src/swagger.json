@@ -16,18 +16,15 @@
         "tags": ["Category"],
         "summary": "Create a category",
         "description": "Create a new category",
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  }
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
                 },
                 "example": {
                   "name": "Name example",
@@ -38,12 +35,8 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "409": {
-            "description": "Category already exists"
-          }
+          "201": { "description": "Created" },
+          "409": { "description": "Category already exists" }
         }
       },
       "get": {
@@ -164,6 +157,39 @@
             }
           }
         }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["User"],
+        "summary": "Authentication user",
+        "description": "Authentication user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": { "type": "string" },
+                  "password": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Success" },
+          "401": { "description": "Email or password incorrect"}
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
