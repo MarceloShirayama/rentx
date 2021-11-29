@@ -1,0 +1,12 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=rentals/devolution
+
+### Create
+@token_user_id_1=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Mzc3MTAwNzAsImV4cCI6MTcyNDExMDA3MCwic3ViIjoiMmQxOWYxYWQtMzE3Ni00MGMzLWFhOGItMzA2MzAzMGMyYzkxIn0.xn8j-7hjPKJwlf9Em57_kl3rF5-IN4nPU0zol2bqUV4
+@rental_id=88c87df8-5fbe-47ab-baaf-d9f427793255
+
+POST {{url_base}}/{{path}}/{{rental_id}}
+Authorization: Bearer {{token_user_id_1}}
+Content-Type: application/json

@@ -2,7 +2,6 @@ import { inject, injectable } from 'tsyringe'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { dateDiffInDays } from '../../../../utils/date'
 import { ICarsRepository } from '../../../cars/repositories/ICarsRepository'
-import { DevolutionCarDTO } from '../../dtos/rentalDTOs'
 import { Rental } from '../../infra/typeorm/entities/Rental'
 import { IRentalsRepository } from '../../repositories/IRentalsRepository'
 
@@ -15,7 +14,7 @@ export class DevolutionRentalUseCase {
     private carsRepository: ICarsRepository
   ) {}
 
-  async execute({ rental_id, user_id }: DevolutionCarDTO): Promise<Rental> {
+  async execute(rental_id: string): Promise<Rental> {
     const rental = await this.rentalsRepository.findById(rental_id)
 
     const car = await this.carsRepository.findById({ car_id: rental?.car_id })

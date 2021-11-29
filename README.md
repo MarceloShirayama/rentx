@@ -105,5 +105,6 @@
 - [ ] Ao realizar a devolução, deverá ser calculado o total do aluguel.
 - [ ] Caso o horário de devolução do carro seja superior ao horário previsto de entrega, deverá ser cobrado multa proporcional aos dias de atraso.
 - [ ] Caso exista multa, a mesma deverá ser somada ao total do aluguel.
+- [ ] O usuário deve estar logado na aplicação.
 
 ---

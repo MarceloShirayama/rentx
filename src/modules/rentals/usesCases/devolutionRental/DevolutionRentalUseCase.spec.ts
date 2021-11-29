@@ -5,7 +5,6 @@ import { IUsersRepository } from '../../../accounts/repositories/IUsersRepositor
 import { CreateCarDTO } from '../../../cars/dtos/CreateCarDTO'
 import { ICarsRepository } from '../../../cars/repositories/ICarsRepository'
 import { CarsRepositoryInMemory } from '../../../cars/repositories/in-memory/CarsRepositoryInMemory'
-import { DevolutionCarDTO } from '../../dtos/rentalDTOs'
 import { RentalsRepositoryInMemory } from '../../repositories/in-memory/RentalsRepositoryInMemory'
 import { IRentalsRepository } from '../../repositories/IRentalsRepository'
 import { DevolutionRentalUseCase } from './DevolutionRentalUseCase'
@@ -88,11 +87,7 @@ describe('DevolutionRentalUseCase', () => {
     )
     const rental_id = rental?.id as string
 
-    const devolutionCar: DevolutionCarDTO = {
-      rental_id,
-      user_id
-    }
-    const response = await devolutionRentalUseCase.execute(devolutionCar)
+    const response = await devolutionRentalUseCase.execute(rental_id)
 
     expect(car?.available).toBeTruthy()
     expect(response).toHaveProperty('id')
