@@ -38,4 +38,8 @@ export class RentalsRepositoryInMemory implements IRentalsRepository {
 
     return rental
   }
+
+  async findByUser(user_id: string): Promise<Rental[]> {
+    throw new Error('Method not implemented.')
+  }
 }
