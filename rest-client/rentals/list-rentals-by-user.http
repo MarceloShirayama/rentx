@@ -1,0 +1,18 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=rentals/user
+
+### List rentals by user
+@token_user_id_1=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzgyMDg1MDgsImV4cCI6MTcyNDYwODUwOCwic3ViIjoiMmQxOWYxYWQtMzE3Ni00MGMzLWFhOGItMzA2MzAzMGMyYzkxIn0.xInM1vthyWUIXyWrPKEfC5X67GMz-7YAeNsJmYrI9fA
+@token_user_id_2=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzgyMDczNDYsImV4cCI6MTcyNDYwNzM0Niwic3ViIjoiNDJhNDUxYWEtNzk2Ny00ZTFiLThhZTEtZTkxY2RjNjkyMmFjIn0.deIFZh27syHAgCJ5vHUW_lltUsG7SOdTiAp1z7qtNUU
+
+### List rentals by user 1
+GET {{url_base}}/{{path}}
+Authorization: Bearer {{token_user_id_1}}
+Content-Type: application/json
+
+### List rentals by user 2
+GET {{url_base}}/{{path}}
+Authorization: Bearer {{token_user_id_2}}
+Content-Type: application/json
