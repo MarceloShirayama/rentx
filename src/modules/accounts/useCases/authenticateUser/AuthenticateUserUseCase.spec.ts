@@ -4,7 +4,7 @@ import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepos
 import { UsersTokensRepositoryInMemory } from '../../repositories/in-memory/UsersTokensRepositoryInMemory'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { IUsersTokensRepository } from '../../repositories/IUsersTokensRepository'
-import { CreateUserUseCase } from '../CreateUser/CreateUserUseCase'
+import { CreateUserUseCase } from '../createUser/CreateUserUseCase'
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase'
 
 let usersRepository: IUsersRepository
