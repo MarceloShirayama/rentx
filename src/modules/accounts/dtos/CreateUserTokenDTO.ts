@@ -3,3 +3,8 @@ export type CreateUserTokenDTO = {
   expires_date: Date
   refresh_token: string
 }
+
+export type RequestUserTokensDTo = {
+  user_id: string
+  refresh_token: string
+}

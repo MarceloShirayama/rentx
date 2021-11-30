@@ -36,14 +36,12 @@ export class AuthenticateUserUseCase {
       expiresIn: refreshToken.expiresIn
     })
 
-    const expiresRefreshToken = addHoursInCurrentDate(
-      refreshToken.expiresRefreshToken
-    )
+    const expires_date = addHoursInCurrentDate(refreshToken.expiresRefreshToken)
 
     await this.usersTokensRepository.create({
       user_id: userExists.id as string,
       refresh_token,
-      expires_date: expiresRefreshToken
+      expires_date
     })
 
     const user = {
