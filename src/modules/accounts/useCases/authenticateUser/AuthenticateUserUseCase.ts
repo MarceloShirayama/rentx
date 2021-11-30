@@ -26,12 +26,12 @@ export class AuthenticateUserUseCase {
 
     if (!passwordMatch) throw new AppError('Email or password incorrect', 401)
 
-    const token = sign({}, String(jwtConfig.secret), {
+    const token = sign({}, jwtConfig.secret, {
       subject: userExists.id,
       expiresIn: jwtConfig.expiresIn
     })
 
-    const refresh_token = sign({ email }, String(refreshToken.secret), {
+    const refresh_token = sign({ email }, refreshToken.secret, {
       subject: userExists.id,
       expiresIn: refreshToken.expiresIn
     })
@@ -41,7 +41,7 @@ export class AuthenticateUserUseCase {
     )
 
     await this.usersTokensRepository.create({
-      user_id: String(userExists.id),
+      user_id: userExists.id as string,
       refresh_token,
       expires_date: expiresRefreshToken
     })
