@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 import { verify } from 'jsonwebtoken'
 import { AppError } from '../../errors/AppError'
 import { UsersRepository } from '../../../../modules/accounts/infra/typeorm/repositories/UsersRepository'
+import { jwtConfig } from '../../../../config/auth'
 
 type HeadersPayloadDTO = {
   sub: string
@@ -21,7 +22,7 @@ export async function ensureAuthenticate(
   try {
     const { sub: user_id } = verify(
       token,
-      String(process.env.SECRET_KEY)
+      jwtConfig.secret
     ) as HeadersPayloadDTO
 
     const usersRepository = new UsersRepository()
