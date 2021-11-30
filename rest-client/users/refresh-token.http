@@ -1,0 +1,12 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=refresh-token
+
+### Create token User Admin Seed
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI0QG1haWwuY29tIiwiaWF0IjoxNjM4MzE1MDA0LCJleHAiOjE2NDA5MDcwMDQsInN1YiI6ImEzZmVlMzk4LThhZjMtNDAxMi04YTI2LWZiMWZlY2RhNjFhMCJ9.n6Vj0OnxmlC6llqrZhrUym_3VnyWpBMiJueJsSXfCQM"
+}
