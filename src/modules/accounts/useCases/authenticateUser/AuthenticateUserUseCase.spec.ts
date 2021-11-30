@@ -1,23 +1,28 @@
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { CreateUserDTO } from '../../dtos/CreateUserDTO'
 import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepositoryInMemory'
+import { UsersTokensRepositoryInMemory } from '../../repositories/in-memory/UsersTokensRepositoryInMemory'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
+import { IUsersTokensRepository } from '../../repositories/IUsersTokensRepository'
 import { CreateUserUseCase } from '../CreateUser/CreateUserUseCase'
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase'
 
-let usersRepositoryInMemory: IUsersRepository
+let usersRepository: IUsersRepository
+let usersTokensRepository: IUsersTokensRepository
 let authenticateUserUseCase: AuthenticateUserUseCase
 let createUserUseCase: CreateUserUseCase
 
 describe('Authenticate User', () => {
   beforeEach(() => {
-    usersRepositoryInMemory = new UsersRepositoryInMemory()
+    usersRepository = new UsersRepositoryInMemory()
+    usersTokensRepository = new UsersTokensRepositoryInMemory()
 
     authenticateUserUseCase = new AuthenticateUserUseCase(
-      usersRepositoryInMemory
+      usersRepository,
+      usersTokensRepository
     )
 
-    createUserUseCase = new CreateUserUseCase(usersRepositoryInMemory)
+    createUserUseCase = new CreateUserUseCase(usersRepository)
   })
 
   it('Should be able to authenticate an user', async () => {

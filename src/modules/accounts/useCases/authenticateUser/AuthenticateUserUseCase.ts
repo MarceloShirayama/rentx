@@ -1,28 +1,20 @@
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
-import { jwtConfig } from '../../../../config/auth'
+import { jwtConfig, refreshToken } from '../../../../config/auth'
 import { AppError } from '../../../../shared/infra/errors/AppError'
+import { addHoursInCurrentDate } from '../../../../utils/date'
+import { RequestUserDTO, ResponseUserDTO } from '../../dtos/CreateUserDTO'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
-
-type RequestUserDTO = {
-  email: string
-  password: string
-}
-
-type ResponseUserDTO = {
-  user: {
-    name: string
-    email: string
-  }
-  token: string
-}
+import { IUsersTokensRepository } from '../../repositories/IUsersTokensRepository'
 
 @injectable()
 export class AuthenticateUserUseCase {
   constructor(
     @inject('UsersRepository')
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+    @inject('UsersTokensRepository')
+    private usersTokensRepository: IUsersTokensRepository
   ) {}
 
   async execute({ email, password }: RequestUserDTO): Promise<ResponseUserDTO> {
@@ -34,12 +26,24 @@ export class AuthenticateUserUseCase {
 
     if (!passwordMatch) throw new AppError('Email or password incorrect', 401)
 
-    const secret = String(jwtConfig.secret)
-    const expiresIn = jwtConfig.expiresIn
-
-    const token = sign({}, secret, {
+    const token = sign({}, String(jwtConfig.secret), {
       subject: userExists.id,
-      expiresIn
+      expiresIn: jwtConfig.expiresIn
+    })
+
+    const refresh_token = sign({ email }, String(refreshToken.secret), {
+      subject: userExists.id,
+      expiresIn: refreshToken.expiresIn
+    })
+
+    const expiresRefreshToken = addHoursInCurrentDate(
+      refreshToken.expiresRefreshToken
+    )
+
+    await this.usersTokensRepository.create({
+      user_id: String(userExists.id),
+      refresh_token,
+      expires_date: expiresRefreshToken
     })
 
     const user = {
@@ -47,6 +51,6 @@ export class AuthenticateUserUseCase {
       email: userExists.email
     }
 
-    return { user, token }
+    return { user, token, refresh_token }
   }
 }

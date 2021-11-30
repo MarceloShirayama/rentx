@@ -6,3 +6,17 @@ export type CreateUserDTO = {
   driver_license: string
   avatar?: string
 }
+
+export type RequestUserDTO = {
+  email: string
+  password: string
+}
+
+export type ResponseUserDTO = {
+  user: {
+    name: string
+    email: string
+  }
+  token: string
+  refresh_token: string
+}

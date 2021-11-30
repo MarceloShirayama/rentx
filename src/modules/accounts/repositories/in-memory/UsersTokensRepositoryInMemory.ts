@@ -3,7 +3,15 @@ import { UserTokens } from '../../infra/typeorm/entities/UserTokens'
 import { IUsersTokensRepository } from '../IUsersTokensRepository'
 
 export class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
+  usersTokens: UserTokens[] = []
+
   async create(data: CreateUserTokenDTO): Promise<UserTokens> {
-    throw new Error('Method not implemented.')
+    const userToken = new UserTokens()
+
+    Object.assign(userToken, { ...data })
+
+    this.usersTokens.push(userToken)
+
+    return userToken
   }
 }
