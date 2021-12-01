@@ -1,0 +1,12 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=password/forgot
+
+### Send mail
+POST {{url_base}}/{{path}}
+Content-Type: application/json
+
+{
+  "email": "user5@mail.com"
+}

@@ -123,4 +123,18 @@
 
 ---
 
+### Recuperar senha
+
+#### - **RF** => Requisitos Funcionais
+
+- [] Deve ser possível o usuário recuperar a senha informando o e-mail.
+
+#### - **RNF** => Requisitos Não Funcionais
+
+#### - **RN** => Regra de Negócio
+
+- [ ] O usuário precisa informar uma nova senha.
+- [ ] O link enviado para a recuperação de senha deve expirar em 3 horas.
+
+---
 

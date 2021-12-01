@@ -5,6 +5,7 @@ import { connectionDatabase } from '../typeorm'
 import { AppError } from '../errors/AppError'
 import { router } from './routes'
 import '../../container'
+import '../../providers'
 import swaggerFile from '../../../swagger.json'
 ;(async function CreateConnection() {
   await connectionDatabase()
