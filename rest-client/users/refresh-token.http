@@ -3,10 +3,10 @@
 @url_base=http://{{host}}:{{port}}
 @path=refresh-token
 
-### Create token User Admin Seed
+### Create refresh token User Admin Seed
 POST {{url_base}}/{{path}}
 Content-Type: application/json
 
 {
-  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI0QG1haWwuY29tIiwiaWF0IjoxNjM4MzE1MDA0LCJleHAiOjE2NDA5MDcwMDQsInN1YiI6ImEzZmVlMzk4LThhZjMtNDAxMi04YTI2LWZiMWZlY2RhNjFhMCJ9.n6Vj0OnxmlC6llqrZhrUym_3VnyWpBMiJueJsSXfCQM"
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiaWF0IjoxNjM4Mzc1OTgwLCJleHAiOjE2NDA5Njc5ODAsInN1YiI6ImFhZDE2NjNmLTRhMWYtNDQ1ZS04YTk2LWYzNjkyNmU0MmZjNyJ9.MgZCWrcqXurZZq8OZ82UpSc1T_hY_xmAqHFTM9kL39k"
 }

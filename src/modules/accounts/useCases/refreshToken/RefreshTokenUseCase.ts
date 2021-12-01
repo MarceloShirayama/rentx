@@ -1,14 +1,10 @@
 import { sign, verify } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
 import { IUsersTokensRepository } from '../../repositories/IUsersTokensRepository'
-import { refreshToken } from '../../../../config/auth'
+import { refreshTokenConfig } from '../../../../config/auth'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { addHoursInCurrentDate } from '../../../../utils/date'
-
-type RequestJwtPayload = {
-  email: string
-  sub: string
-}
+import { RefreshTokenPayloadDTO } from '../../dtos/CreateUserTokenDTO'
 
 @injectable()
 export class RefreshTokenUseCase {
@@ -20,8 +16,8 @@ export class RefreshTokenUseCase {
   async execute(refresh_token: string): Promise<string> {
     const { email, sub } = verify(
       refresh_token,
-      refreshToken.secret
-    ) as RequestJwtPayload
+      refreshTokenConfig.secret
+    ) as RefreshTokenPayloadDTO
 
     const user_id = sub
 
@@ -37,12 +33,14 @@ export class RefreshTokenUseCase {
 
     await this.usersTokensRepository.deleteById(user_token_id)
 
-    const newRefreshToken = sign({ email }, refreshToken.secret, {
+    const newRefreshToken = sign({ email }, refreshTokenConfig.secret, {
       subject: user_id,
-      expiresIn: refreshToken.expiresIn
+      expiresIn: refreshTokenConfig.expiresIn
     })
 
-    const expires_date = addHoursInCurrentDate(refreshToken.expiresRefreshToken)
+    const expires_date = addHoursInCurrentDate(
+      refreshTokenConfig.expiresInHours
+    )
 
     await this.usersTokensRepository.create({
       user_id,

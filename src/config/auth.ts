@@ -3,12 +3,12 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 
 export const jwtConfig = {
-  secret: String(process.env.SECRET_KEY),
+  secret: process.env.SECRET_KEY as string,
   expiresIn: '15m'
 }
 
-export const refreshToken = {
-  secret: String(process.env.SECRET_REFRESH_TOKEN),
+export const refreshTokenConfig = {
+  secret: process.env.SECRET_REFRESH_TOKEN as string,
   expiresIn: '30d',
-  expiresRefreshToken: 720
+  expiresInHours: 720
 }

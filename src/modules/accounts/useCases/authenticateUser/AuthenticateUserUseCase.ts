@@ -1,7 +1,7 @@
 import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
-import { jwtConfig, refreshToken } from '../../../../config/auth'
+import { jwtConfig, refreshTokenConfig } from '../../../../config/auth'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { addHoursInCurrentDate } from '../../../../utils/date'
 import { RequestUserDTO, ResponseUserDTO } from '../../dtos/CreateUserDTO'
@@ -31,12 +31,14 @@ export class AuthenticateUserUseCase {
       expiresIn: jwtConfig.expiresIn
     })
 
-    const refresh_token = sign({ email }, refreshToken.secret, {
+    const refresh_token = sign({ email }, refreshTokenConfig.secret, {
       subject: userExists.id,
-      expiresIn: refreshToken.expiresIn
+      expiresIn: refreshTokenConfig.expiresIn
     })
 
-    const expires_date = addHoursInCurrentDate(refreshToken.expiresRefreshToken)
+    const expires_date = addHoursInCurrentDate(
+      refreshTokenConfig.expiresInHours
+    )
 
     await this.usersTokensRepository.create({
       user_id: userExists.id as string,

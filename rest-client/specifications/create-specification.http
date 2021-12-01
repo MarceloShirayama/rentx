@@ -46,6 +46,16 @@ Content-Type: application/json
   "description": "Especificação de carro com 2 portas"
 }
 
+### Create specification
+POST {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}
+Content-Type: application/json
+
+{
+  "name": "piloto automático",
+  "description": "Especificação de carro com piloto automático"
+}
+
 ### Create specification invalid token
 POST {{url_base}}/{{path}}
 Authorization: Bearer {{token_invalid}}
