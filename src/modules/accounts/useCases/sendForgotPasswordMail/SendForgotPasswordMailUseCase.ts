@@ -1,10 +1,12 @@
 import { inject, injectable } from 'tsyringe'
 import { v4 as uuidV4 } from 'uuid'
+import { resolve } from 'path'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { IMailProvider } from '../../../../shared/providers/MailProvider/IMailProvider'
 import { addHoursInCurrentDate } from '../../../../utils/date'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { IUsersTokensRepository } from '../../repositories/IUsersTokensRepository'
+import { mailConfig } from '../../../../config/mail'
 
 @injectable()
 export class SendForgotPasswordMailUseCase {
@@ -20,6 +22,15 @@ export class SendForgotPasswordMailUseCase {
   async execute(email: string): Promise<void> {
     const user = await this.usersRepository.findByEmail(email)
 
+    const templatePath = resolve(
+      __dirname,
+      '..',
+      '..',
+      'views',
+      'emails',
+      'forgotPassword.hbs'
+    )
+
     if (!user) throw new AppError('User does not exists!')
 
     const token = uuidV4()
@@ -30,10 +41,16 @@ export class SendForgotPasswordMailUseCase {
       expires_date: addHoursInCurrentDate(3)
     })
 
+    const variables = {
+      name: user.name,
+      link: `${mailConfig.forgotMailUrl}${token}`
+    }
+
     await this.mailProvider.sendMail({
       to: email,
       subject: `Recuperação de senha do usuário ${email}`,
-      body: `O link para o reset é ${token}`
+      variables,
+      path: templatePath
     })
   }
 }

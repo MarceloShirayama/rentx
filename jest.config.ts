@@ -9,5 +9,5 @@ export default {
   coverageProvider: 'v8',
   preset: 'ts-jest',
   testMatch: ['**/*.spec.ts'],
-  setupFiles: ['<rootDir>src/config/auth.ts']
+  setupFiles: ['<rootDir>src/config/auth.ts', '<rootDir>src/config/mail.ts']
 }
