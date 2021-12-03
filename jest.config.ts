@@ -9,5 +9,9 @@ export default {
   coverageProvider: 'v8',
   preset: 'ts-jest',
   testMatch: ['**/*.spec.ts'],
-  setupFiles: ['<rootDir>src/config/auth.ts', '<rootDir>src/config/mail.ts']
+  setupFiles: ['<rootDir>src/config/auth.ts', '<rootDir>src/config/mail.ts'],
+  // collectCoverage: true,
+  collectCoverageFrom: ['<rootDir>/src/modules/**/useCases/**/*.ts'],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['text-summary', 'lcov']
 }
