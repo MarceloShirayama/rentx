@@ -6,6 +6,7 @@ import { MailProviderInMemory } from '../../../../shared/providers/MailProvider/
 import { UsersRepositoryInMemory } from '../../repositories/in-memory/UsersRepositoryInMemory'
 import { UsersTokensRepositoryInMemory } from '../../repositories/in-memory/UsersTokensRepositoryInMemory'
 import { CreateUserDTO } from '../../dtos/CreateUserDTO'
+import { AppError } from '../../../../shared/infra/errors/AppError'
 
 let sendForgotPasswordMailUseCase: SendForgotPasswordMailUseCase
 let usersRepository: IUsersRepository
@@ -43,5 +44,11 @@ describe('SendForgotPasswordMail', () => {
     await sendForgotPasswordMailUseCase.execute(userFake.email)
 
     expect(sendMail).toHaveBeenCalled()
+  })
+
+  it('Should not be able to send a forgot password mail if user does not exists', async () => {
+    await expect(
+      sendForgotPasswordMailUseCase.execute(userFake.email)
+    ).rejects.toEqual(new AppError('User does not exists!'))
   })
 })
