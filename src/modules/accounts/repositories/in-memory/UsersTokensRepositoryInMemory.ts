@@ -21,15 +21,11 @@ export class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
   async findByUserIdAndRefreshToken(
     data: RequestUserTokensDTo
   ): Promise<UserTokens | undefined> {
-    const userToken = this.usersTokens.find((userTokens) => {
-      if (
+    const userToken = this.usersTokens.find(
+      (userTokens) =>
         userTokens.user_id === data.user_id &&
         userTokens.refresh_token === data.refresh_token
-      ) {
-        return userTokens
-      }
-      return null
-    })
+    )
 
     return userToken
   }
