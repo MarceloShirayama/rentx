@@ -43,4 +43,14 @@ export class UsersTokensRepositoryInMemory implements IUsersTokensRepository {
       this.usersTokens.splice(index, 1)
     }
   }
+
+  async findByRefreshToken(
+    refresh_token: string
+  ): Promise<UserTokens | undefined> {
+    const userToken = this.usersTokens.find(
+      (userToken) => userToken.refresh_token === refresh_token
+    )
+
+    return userToken
+  }
 }

@@ -21,3 +21,14 @@ export const addHoursInCurrentDate = (hours: number) =>
 
 export const subHoursInCurrentDate = (hours: number) =>
   new Date(new Date().setHours(new Date().getHours() - hours))
+
+export const compareIfDateIsBefore = (
+  baseDate: Date,
+  dateToCompare: Date
+): boolean => {
+  const date1 = new Date(baseDate).getTime()
+  const date2 = new Date(dateToCompare).getTime()
+  const compare = date1 < date2
+
+  return compare
+}
