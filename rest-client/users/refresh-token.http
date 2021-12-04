@@ -3,10 +3,12 @@
 @url_base=http://{{host}}:{{port}}
 @path=refresh-token
 
+@refresh_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI1QG1haWwuY29tIiwiaWF0IjoxNjM4NjI5NzY0LCJleHAiOjE2NDEyMjE3NjQsInN1YiI6IjQyMGZkMGZhLWRjOWEtNGI0MS1hN2U0LTc0MmFmOWE5OGQ5ZSJ9.OrZDpBiPgMeq8C7GeHBOXdejB4A_X6unU65VQ-0OoFk
+
 ### Create refresh token User Admin Seed
 POST {{url_base}}/{{path}}
 Content-Type: application/json
 
 {
-  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXI1QG1haWwuY29tIiwiaWF0IjoxNjM4NTgyMTQ3LCJleHAiOjE2NDExNzQxNDcsInN1YiI6Ijg0OGE1ZDE2LWZkN2EtNGQ2Zi05ZTNmLTc0MGNmOWM1OTU4ZSJ9.7HVyOKSlzvaAWeyVp1873VSIg6FnABRyDaoC1r7-EmE"
+  "refresh_token": "{{refresh_token}}"
 }

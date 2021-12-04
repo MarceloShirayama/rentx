@@ -1,10 +1,13 @@
 import { sign, verify } from 'jsonwebtoken'
 import { inject, injectable } from 'tsyringe'
 import { IUsersTokensRepository } from '../../repositories/IUsersTokensRepository'
-import { refreshTokenConfig } from '../../../../config/auth'
+import { jwtConfig, refreshTokenConfig } from '../../../../config/auth'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { addHoursInCurrentDate } from '../../../../utils/date'
-import { RefreshTokenPayloadDTO } from '../../dtos/CreateUserTokenDTO'
+import {
+  RefreshTokenInputDTO,
+  RefreshTokenOutputDTO
+} from '../../dtos/RefreshTokenDTO'
 
 @injectable()
 export class RefreshTokenUseCase {
@@ -13,11 +16,11 @@ export class RefreshTokenUseCase {
     private usersTokensRepository: IUsersTokensRepository
   ) {}
 
-  async execute(refresh_token: string): Promise<string> {
+  async execute(refresh_token: string): Promise<RefreshTokenOutputDTO> {
     const { email, sub } = verify(
       refresh_token,
       refreshTokenConfig.secret
-    ) as RefreshTokenPayloadDTO
+    ) as RefreshTokenInputDTO
 
     const user_id = sub
 
@@ -48,6 +51,14 @@ export class RefreshTokenUseCase {
       expires_date
     })
 
-    return newRefreshToken
+    const newToken = sign({}, jwtConfig.secret, {
+      subject: user_id,
+      expiresIn: jwtConfig.expiresIn
+    })
+
+    return {
+      token: newToken,
+      refresh_token: newRefreshToken
+    }
   }
 }
