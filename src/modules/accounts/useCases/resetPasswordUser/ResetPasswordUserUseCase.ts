@@ -3,7 +3,6 @@ import { inject, injectable } from 'tsyringe'
 import { AppError } from '../../../../shared/infra/errors/AppError'
 import { compareIfDateIsBefore } from '../../../../utils/date'
 import { ResetPasswordInputDTO } from '../../dtos/ResetPasswordDTO'
-import { UserTokens } from '../../infra/typeorm/entities/UserTokens'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { IUsersTokensRepository } from '../../repositories/IUsersTokensRepository'
 
@@ -16,10 +15,8 @@ export class ResetPasswordUserUseCase {
     private usersRepository: IUsersRepository
   ) {}
 
-  async execute(data: ResetPasswordInputDTO): Promise<void> {
-    const userToken = (await this.usersTokensRepository.findByRefreshToken(
-      data.token
-    )) as UserTokens
+  async execute({ token, password }: ResetPasswordInputDTO): Promise<void> {
+    const userToken = await this.usersTokensRepository.findByRefreshToken(token)
 
     if (!userToken) throw new AppError('Token invalid')
 
@@ -33,7 +30,7 @@ export class ResetPasswordUserUseCase {
     const user = await this.usersRepository.findById(userToken.user_id)
 
     if (user) {
-      user.password = await hash(data.password, 8)
+      user.password = await hash(password, 8)
 
       await this.usersRepository.create(user)
 

@@ -6,9 +6,10 @@ import { ResetPasswordUserUseCase } from './ResetPasswordUserUseCase'
 export class ResetPasswordUserController {
   async handle(req: Request, res: Response): Promise<Response> {
     const input: ResetPasswordInputDTO = {
-      token: req.query as unknown as string,
-      password: req.body
+      token: String(req.query.token),
+      password: req.body.password
     }
+
     const resetPasswordUserUseCase = container.resolve(ResetPasswordUserUseCase)
 
     await resetPasswordUserUseCase.execute(input)
