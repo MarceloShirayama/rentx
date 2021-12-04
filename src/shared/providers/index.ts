@@ -6,3 +6,4 @@ container.registerInstance<IMailProvider>(
   'EtherealMailProvider',
   new EtherealMailProvider()
 )
+// FIXME: problems auto import and reflect-metadata of the providers
