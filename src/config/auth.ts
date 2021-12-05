@@ -4,7 +4,7 @@ dotenv.config()
 
 export const jwtConfig = {
   secret: process.env.SECRET_KEY as string,
-  expiresIn: '15m'
+  expiresIn: '1d'
 }
 
 export const refreshTokenConfig = {
