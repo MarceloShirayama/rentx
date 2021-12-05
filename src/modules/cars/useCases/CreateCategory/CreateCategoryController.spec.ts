@@ -6,7 +6,7 @@ import { app } from '../../../../shared/infra/http/app'
 import { connectionDatabase } from '../../../../shared/infra/typeorm'
 
 let connection: Connection
-let refresh_token: string
+let token: string
 
 const emailAdminSeed = 'admin_test@mail.com'
 const passwordAdminSeed = 'admin_test'
@@ -38,7 +38,7 @@ const createUserAdminSeed = async () => {
   ])
 }
 
-describe('Create Category Controller', () => {
+describe('CreateCategoryController', () => {
   jest.setTimeout(15000)
   beforeAll(async () => {
     connection = await connectionDatabase()
@@ -49,7 +49,7 @@ describe('Create Category Controller', () => {
       .post('/sessions')
       .send({ email: `${emailAdminSeed}`, password: `${passwordAdminSeed}` })
 
-    refresh_token = responseToken.body.refresh_token
+    token = responseToken.body.token
   })
 
   afterAll(async () => {
@@ -65,7 +65,7 @@ describe('Create Category Controller', () => {
         name: 'any category name',
         description: 'any description category name'
       })
-      .set({ authorization: `Bearer ${refresh_token}` })
+      .set({ authorization: `Bearer ${token}` })
       .expect(201)
   })
 
@@ -76,7 +76,7 @@ describe('Create Category Controller', () => {
         name: 'any category name',
         description: 'other description category name'
       })
-      .set({ authorization: `Bearer ${refresh_token}` })
+      .set({ authorization: `Bearer ${token}` })
       .expect(409)
   })
 })
