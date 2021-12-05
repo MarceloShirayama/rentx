@@ -1,10 +1,11 @@
 import crypto from 'crypto'
-import { resolve } from 'path'
 import multer from 'multer'
+import { resolve } from 'path'
 
 const tmpFolder = resolve(__dirname, '..', '..', 'tmp')
 
 export const uploadConfig = {
+  diskStorage: process.env.DISK_STORAGE,
   tmpFolder,
   storage: multer.diskStorage({
     destination: tmpFolder,

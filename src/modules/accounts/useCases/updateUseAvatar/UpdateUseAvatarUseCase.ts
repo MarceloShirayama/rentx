@@ -20,9 +20,9 @@ export class UpdateUseAvatarUseCase {
     const user = await this.usersRepository.findById(user_id)
 
     if (user?.avatar)
-      await this.storageProvider.deleteFile(user.avatar, 'avatars')
+      await this.storageProvider.deleteFile(user.avatar, 'avatar')
 
-    if (avatarFile) await this.storageProvider.saveFile(avatarFile, 'avatars')
+    if (avatarFile) await this.storageProvider.saveFile(avatarFile, 'avatar')
 
     user!.avatar = avatarFile
 
