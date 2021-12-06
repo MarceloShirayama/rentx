@@ -1,3 +1,4 @@
+import { Expose } from 'class-transformer'
 import {
   Column,
   CreateDateColumn,
@@ -5,7 +6,8 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
-
+import { appConfig } from '../../../../../config/app'
+import { uploadConfig } from '../../../../../config/upload'
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -31,6 +33,18 @@ export class User {
 
   @CreateDateColumn()
   created_at?: Date
+
+  @Expose({ name: 'avatar_url' })
+  avatar_url(): string | null | undefined {
+    switch (uploadConfig.diskStorage) {
+      case 'local':
+        return `${appConfig.appUrl}/avatar/${this.avatar}`
+      case 's3':
+        return `${uploadConfig.urlBucket}/avatar/${this.avatar}`
+      default:
+        return null
+    }
+  }
 
   constructor() {
     if (!this.id) this.id = uuidV4()

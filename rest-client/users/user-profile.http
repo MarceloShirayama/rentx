@@ -1,0 +1,10 @@
+@host={{$dotenv SERVER_HOST}}
+@port={{$dotenv SERVER_PORT}}
+@url_base=http://{{host}}:{{port}}
+@path=users/profile
+
+@token_admin_seed={{$dotenv TOKEN_SEED_ADMIN}}
+
+### get profile
+GET {{url_base}}/{{path}}
+Authorization: Bearer {{token_admin_seed}}

@@ -5,6 +5,7 @@ import { resolve } from 'path'
 const tmpFolder = resolve(__dirname, '..', '..', 'tmp')
 
 export const uploadConfig = {
+  urlBucket: process.env.AWS_BUCKET_URL,
   diskStorage: process.env.DISK_STORAGE,
   tmpFolder,
   storage: multer.diskStorage({

@@ -13,7 +13,8 @@ export default {
     '<rootDir>src/config/auth.ts',
     '<rootDir>src/config/mail.ts',
     '<rootDir>src/config/aws.ts',
-    '<rootDir>src/config/upload.ts'
+    '<rootDir>src/config/upload.ts',
+    '<rootDir>src/config/app.ts'
   ],
   // collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/modules/**/useCases/**/*.ts'],
