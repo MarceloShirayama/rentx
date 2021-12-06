@@ -11,8 +11,6 @@ container.registerInstance<IMailProvider>(
   new EtherealMailProvider()
 )
 
-console.log(uploadConfig.diskStorage)
-
 // FIXME: Esta abordagem não está corretamente implementada, pois sem restartar a aplicação, o container não reconhece a nova implementação, e restartando a aplicação, o s3 não deleta o arquivo.
 // TODO: Uma forma mais apropriada seria setar local nos testes e s3 em produção.
 if (uploadConfig.diskStorage === 's3') {
