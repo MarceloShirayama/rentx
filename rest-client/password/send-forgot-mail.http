@@ -16,5 +16,5 @@ POST {{url_base}}/{{path}}
 Content-Type: application/json
 
 {
-  "email": "user4@mail.com"
+  "email": "user5@mail.com"
 }
