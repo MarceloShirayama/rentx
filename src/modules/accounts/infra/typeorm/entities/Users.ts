@@ -6,7 +6,7 @@ import {
   PrimaryGeneratedColumn
 } from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
-import { appConfig } from '../../../../../config/app'
+import { appConfig } from '../../../../../config/appAPI'
 import { uploadConfig } from '../../../../../config/upload'
 @Entity('users')
 export class User {
