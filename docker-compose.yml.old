@@ -13,6 +13,20 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+    network_mode: host
+  app:
+    build: .
+    container_name: ${PROJECT_NAME}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+      - 9229:9229
+    volumes:
+      - .:/usr/app
+    network_mode: host
+    links:
+      - database
+    depends_on:
+      - database
 volumes:
   pg_data:
     driver: local
