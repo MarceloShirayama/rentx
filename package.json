@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --inspect=0.0.0.0:9229 -r dotenv/config --transpile-only --ignore-watch node_modules --respawn .",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "start": "node -r dotenv/config ./dist/server.js",
+    "start": "node -r dotenv/config dist/shared/infra/http/server.js",
     "typeorm": "ts-node-dev ./node_modules/.bin/typeorm",
     "migration:create": "NODE_ENV=local npm run typeorm -- migration:create -- -n",
     "migration:run": "NODE_ENV=local npm run typeorm -- migration:run",

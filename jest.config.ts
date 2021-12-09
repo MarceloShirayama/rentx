@@ -14,7 +14,7 @@ export default {
     '<rootDir>src/config/mail.ts',
     '<rootDir>src/config/aws.ts',
     '<rootDir>src/config/upload.ts',
-    '<rootDir>src/config/app.ts'
+    '<rootDir>src/config/appAPI.ts'
   ],
   // collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/modules/**/useCases/**/*.ts'],
