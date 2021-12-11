@@ -13,7 +13,7 @@
     "migration:revert": "NODE_ENV=local npm run typeorm -- migration:revert",
     "test": "NODE_ENV=test jest --collect-coverage  --detectOpenHandles --runInBand",
     "test:unit": "NODE_ENV=test jest --watch --detectOpenHandles --runInBand",
-    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
+    "seed:admin": "node src/shared/infra/typeorm/seed/admin.js"
   },
   "keywords": [],
   "author": "",
