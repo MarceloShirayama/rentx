@@ -8,11 +8,14 @@ import { connectionDatabase } from '../typeorm'
 import '../../container' // must be below typeorm to load reflect-metadata before
 import { AppError } from '../errors/AppError'
 import { router } from './routes'
+import { rateLimiter } from './middlewares/raterLimiter'
 ;(async function CreateConnection() {
   await connectionDatabase()
 })()
 
 const app = express()
+
+app.use(rateLimiter)
 
 app.use(express.json())
 
